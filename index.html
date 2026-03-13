@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARGENTUM GmbH – Unabhängige Finanzberatung Wels</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --green:        #6a9b3a;
+      --green-dark:   #4d7a25;
+      --green-mid:    #5a8a2d;
+      --green-light:  #8ab954;
+      --green-pale:   #f2f7ec;
+      --green-bg:     #e8f2de;
+      --charcoal:     #2d3640;
+      --text:         #333333;
+      --gray:         #555555;
+      --gray-light:   #888888;
+      --gray-pale:    #f5f5f5;
+      --divider:      #e0e0e0;
+      --white:        #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--divider);
+      padding: 0 60px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+
+    /* ── LOGO ──────────────────────────────────────────── */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-tree {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+    }
+
+    .logo-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: 3px;
+    }
+
+    .logo-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+
+    .logo-tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      line-height: 1.45;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links li {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links li + li::before {
+      content: '|';
+      color: var(--divider);
+      font-size: 14px;
+      margin: 0 4px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: 6px 16px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 0;
+      align-items: stretch;
+      min-height: 420px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .hero-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      min-height: 380px;
+    }
+
+    .hero-aside {
+      background: var(--green);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-aside::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: -22px;
+      width: 0;
+      height: 0;
+      border-top: 22px solid transparent;
+      border-bottom: 22px solid transparent;
+      border-right: 22px solid var(--green);
+    }
+
+    .hero-aside-label {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 26px;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .hero-aside-text {
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.75;
+    }
+
+    /* ── BREADCRUMB ─────────────────────────────────────── */
+    .breadcrumb {
+      padding: 10px 60px;
+      font-size: 13px;
+      color: var(--gray-light);
+      border-bottom: 1px solid var(--divider);
+      background: #fafafa;
+    }
+
+    .breadcrumb a { color: var(--green); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ── INTRO 3-COL ────────────────────────────────────── */
+    .intro-section {
+      padding: 56px 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 48px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .intro-quote {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--green);
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+
+    .intro-quote .quote-attr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      font-style: normal;
+      color: var(--green-dark);
+      display: block;
+      margin-top: 10px;
+    }
+
+    .intro-body {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    .intro-col h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .intro-col p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    .intro-col .contact-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .intro-col .contact-link:hover { color: var(--green-dark); text-decoration: underline; }
+
+    /* ── SECTION SHARED ─────────────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    /* ── LEISTUNGEN CARDS ───────────────────────────────── */
+    .services {
+      padding: 64px 60px;
+      background: var(--green-pale);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--divider);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.10);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 22px 24px 26px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      background: var(--green-bg);
+      border-radius: 4px;
+      padding: 3px 9px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-list li {
+      font-size: 14px;
+      color: var(--gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .card-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green);
+      text-decoration: none;
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .card-link:hover { gap: 9px; color: var(--green-dark); }
+
+    /* ── PHILOSOPHY ─────────────────────────────────────── */
+    .philosophy {
+      padding: 72px 60px;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .philosophy-left p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .quote-block {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+
+    .quote-text {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--green-dark);
+      line-height: 1.6;
+    }
+
+    .quote-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      margin-top: 10px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 15px;
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .check-icon svg {
+      width: 10px; height: 10px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .philosophy-right {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .philosophy-right img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ── STATS ──────────────────────────────────────────── */
+    .stats-section {
+      background: var(--charcoal);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--green-light); }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* ── VALUES / FEATURES ──────────────────────────────── */
+    .features-section {
+      padding: 72px 60px;
+      background: var(--green-pale);
+    }
+
+    .features-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .feature-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── TEAM ───────────────────────────────────────────── */
+    .team-section {
+      padding: 72px 60px;
+      background: var(--white);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 44px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      background: var(--gray-pale);
+    }
+
+    .team-body {
+      padding: 18px 20px 20px;
+    }
+
+    .team-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 3px;
+    }
+
+    .team-role {
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    /* ── CTA ─────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--green);
+      padding: 88px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      min-height: 440px;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 480px; height: 480px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+    }
+
+    .cta-left { position: relative; z-index: 2; }
+
+    .cta-left h2 {
+      font-size: 38px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .cta-left p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-1px);
+    }
+
+    .cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-circle {
+      width: 340px;
+      height: 340px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-circle-inner {
+      width: 230px;
+      height: 230px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .cta-circle-inner svg {
+      width: 36px; height: 36px;
+      stroke: #fff; fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 10px;
+    }
+
+    .cta-circle-inner .cta-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    /* ── PARTNERS ────────────────────────────────────────── */
+    .partners-section {
+      padding: 64px 60px;
+      background: var(--green-pale);
+    }
+
+    .partners-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .partner-chip {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 6px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .partner-chip:hover {
+      background: var(--green-bg);
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────── */
+    .contact-section {
+      padding: 72px 60px;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-info .section-title { margin-bottom: 16px; }
+
+    .contact-info > p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .contact-detail-icon {
+      width: 38px; height: 38px;
+      background: var(--green-bg);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-detail-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-light);
+      margin-bottom: 2px;
+    }
+
+    .detail-val {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .detail-val a { color: var(--charcoal); text-decoration: none; }
+    .detail-val a:hover { color: var(--green); }
+
+    .contact-form {
+      background: var(--green-pale);
+      border: 1px solid #d0e8bb;
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+
+    .contact-form h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 26px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid var(--divider);
+      border-radius: 7px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(106,155,58,0.15);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; margin-top: 6px; padding: 13px; font-size: 15px; border-radius: 7px; }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      padding: 56px 60px 36px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 44px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo-wrap { margin-bottom: 16px; }
+
+    .footer-logo-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #fff;
+    }
+
+    .footer-logo-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-light);
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 20px;
+      max-width: 240px;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--green-light);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-col ul a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+
+    .impressum-section {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+      margin-bottom: 24px;
+    }
+
+    .impressum-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--green-light);
+      margin-bottom: 12px;
+    }
+
+    .impressum-text {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.32);
+      line-height: 1.85;
+      max-width: 960px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── BACKGROUND PATHS HERO ─────────────────────────── */
+    #bp-hero {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f8faf6; /* very faint green tint */
+    }
+
+    /* Two SVG layers – animated via transform+opacity only (GPU compositor) */
+    .bp-svg-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .bp-svg-layer svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Slow gentle drift for each layer — pure transform, zero repaint */
+    @keyframes bp-drift-a {
+      0%   { transform: translate(0px,  0px); }
+      25%  { transform: translate(-18px, -10px); }
+      50%  { transform: translate(-8px,  16px); }
+      75%  { transform: translate(14px,   4px); }
+      100% { transform: translate(0px,   0px); }
+    }
+    @keyframes bp-drift-b {
+      0%   { transform: translate(0px,  0px); }
+      25%  { transform: translate(16px,  12px); }
+      50%  { transform: translate(6px,  -18px); }
+      75%  { transform: translate(-12px, -6px); }
+      100% { transform: translate(0px,   0px); }
+    }
+
+    /* Individual path fade — opacity only (GPU) */
+    @keyframes bp-path-pulse {
+      0%, 100% { opacity: var(--p-lo); }
+      50%       { opacity: var(--p-hi); }
+    }
+
+    /* Content card — glass panel for legibility */
+    .bp-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 56px 64px 52px;
+      max-width: 860px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(106,155,58,0.18);
+      border-radius: 28px;
+      box-shadow:
+        0 2px 0 rgba(255,255,255,0.9) inset,
+        0 20px 60px rgba(26,46,74,0.08),
+        0 4px 16px rgba(106,155,58,0.08);
+    }
+
+    .bp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .bp-eyebrow.bp-visible { opacity: 1; transform: translateY(0); }
+
+    .bp-title-wrap {
+      font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .bp-word {
+      display: inline-block;
+      margin-right: 0.2em;
+    }
+    .bp-word:last-child { margin-right: 0; }
+
+    .bp-letter {
+      display: inline-block;
+      color: var(--charcoal);
+      opacity: 0;
+      transform: translateY(70px);
+    }
+
+    .bp-subtitle {
+      font-size: 18px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .bp-subtitle.bp-visible { opacity: 1; transform: translateY(0); }
+
+    .bp-btn-outer {
+      display: inline-block;
+      border-radius: 14px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 4px 20px rgba(106,155,58,0.35);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+    }
+    .bp-btn-outer.bp-visible { opacity: 1; transform: translateY(0); }
+    .bp-btn-outer:hover { box-shadow: 0 8px 32px rgba(106,155,58,0.45); }
+
+    .bp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--green);
+      border-radius: 12.5px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .bp-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    .bp-btn-arrow {
+      display: inline-block;
+      opacity: 0.8;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .bp-btn:hover .bp-btn-arrow { transform: translateX(4px); opacity: 1; }
+
+    .bp-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.7s ease 2.2s;
+    }
+    .bp-scroll-hint.bp-visible { opacity: 0.38; }
+
+    .bp-scroll-hint span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+
+    .bp-scroll-dot {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.5) translateY(-6px); }
+      50%       { opacity: 1;   transform: scaleY(1)   translateY(6px); }
+    }
+
+    /* ── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .anim { opacity: 0; }
+    .anim.visible {
+      animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .anim-delay-1 { animation-delay: 0.08s; }
+    .anim-delay-2 { animation-delay: 0.16s; }
+    .anim-delay-3 { animation-delay: 0.24s; }
+    .anim-delay-4 { animation-delay: 0.32s; }
+    .anim-delay-5 { animation-delay: 0.40s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-img img { min-height: 260px; }
+      .hero-aside { padding: 32px 24px; }
+      .hero-aside::before { display: none; }
+      .breadcrumb { padding: 10px 20px; }
+      .intro-section, .services, .philosophy, .features-section,
+      .team-section, .cta-section, .partners-section,
+      .contact-section { padding: 44px 20px; }
+      .intro-section { grid-template-columns: 1fr; }
+      .cards-grid, .features-grid { grid-template-columns: 1fr; }
+      .philosophy, .cta-section, .contact-section { grid-template-columns: 1fr; gap: 32px; }
+      .features-header { grid-template-columns: 1fr; }
+      .stats-section { padding: 44px 20px; grid-template-columns: repeat(2,1fr); }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 44px 20px 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────────────── -->
+  <nav id="top">
+    <a href="#top" class="nav-logo">
+      <!-- Tree SVG logo matching ARGENTUM brand -->
+      <svg class="logo-tree" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tree crown layers -->
+        <ellipse cx="27" cy="14" rx="11" ry="9" fill="#6a9b3a"/>
+        <ellipse cx="20" cy="20" rx="9" ry="8" fill="#5a8a2d"/>
+        <ellipse cx="34" cy="20" rx="9" ry="8" fill="#5a8a2d"/>
+        <ellipse cx="27" cy="24" rx="12" ry="9" fill="#6a9b3a"/>
+        <ellipse cx="19" cy="28" rx="8" ry="7" fill="#4d7a25"/>
+        <ellipse cx="35" cy="28" rx="8" ry="7" fill="#4d7a25"/>
+        <ellipse cx="27" cy="30" rx="10" ry="8" fill="#6a9b3a"/>
+        <!-- Trunk -->
+        <rect x="24" y="36" width="6" height="12" rx="2" fill="#4d7a25"/>
+        <!-- Base -->
+        <ellipse cx="27" cy="48" rx="7" ry="2" fill="#4d7a25" opacity="0.4"/>
+      </svg>
+      <div class="logo-wordmark">
+        <span class="logo-name">ARGENTUM</span>
+        <span class="logo-tagline">Absichern® · Finanzieren · Veranlagen</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#ueber-uns">Über uns</a></li>
+      <li><a href="#leistungen">Finanzberatung</a></li>
+      <li><a href="#kooperationen">Kooperationen</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="#kontakt" class="btn-primary">Beratungsgespräch</a>
+  </nav>
+
+  <!-- ── BACKGROUND PATHS HERO ────────────────────────── -->
+  <section id="bp-hero">
+    <div class="bp-svg-layer" id="bp-layer-a"></div>
+    <div class="bp-svg-layer" id="bp-layer-b"></div>
+
+    <div class="bp-content">
+      <p class="bp-eyebrow" id="bp-eyebrow">Unabhängige Finanzberatung · Wels, Österreich</p>
+      <div class="bp-title-wrap" id="bp-title-wrap" aria-label="Ihre Finanzen. Ihr Leben. Ihre Zukunft."></div>
+      <p class="bp-subtitle" id="bp-subtitle">Seit Jahren an Ihrer Seite – mit Kompetenz, Vertrauen und 100&nbsp;% Unabhängigkeit.</p>
+      <div class="bp-btn-outer" id="bp-btn-outer">
+        <a href="#leistungen" class="bp-btn">
+          <span>Unsere Leistungen entdecken</span>
+          <span class="bp-btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bp-scroll-hint" id="bp-scroll-hint">
+      <span>Scrollen</span>
+      <div class="bp-scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ── BREADCRUMB ────────────────────────────────────── -->
+  <div class="breadcrumb">
+    Sie befinden sich hier: <a href="#top">Home</a>
+  </div>
+
+  <!-- ── HERO ──────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-img">
+      <img src="https://placehold.co/900x440/e8f0e0/4d7a25?text=Familie+%2F+Sicherheit+%2F+Zukunft" alt="Familie und finanzielle Sicherheit">
+    </div>
+    <div class="hero-aside">
+      <div class="hero-aside-label">Wussten Sie&nbsp;…</div>
+      <p class="hero-aside-text">… dass bei Verlust der Arbeitskraft für die Betroffenen massive finanzielle Einbußen entstehen können.<br><br>Auf einen Schlag kann Ihr Berufsleben der Vergangenheit angehören. Sichern Sie sich mit einem geringen monatlichen Beitrag ab!</p>
+      <a href="#kontakt" style="display:inline-block;margin-top:24px;font-size:14px;font-weight:700;color:#fff;text-decoration:underline;">Kontaktieren Sie uns →</a>
+    </div>
+  </section>
+
+  <!-- ── INTRO 3-COL ───────────────────────────────────── -->
+  <section class="intro-section" id="ueber-uns">
+    <div>
+      <p class="intro-quote">
+        „Ein Geheimnis des Erfolgs ist, den Standpunkt des anderen zu verstehen."
+        <span class="quote-attr">Henry Ford</span>
+      </p>
+      <p class="intro-body">Mit Freude, Engagement und Leidenschaft arbeiten wir an einem Ziel: Für unsere Kunden die besten Lösungen zu entwickeln. So ist der Erfolg unserer Kunden auch ein Erfolg für uns und die Menschen in Österreich.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Vertrauensvoll und unabhängig</h3>
+      <p>Eine hundertprozentig unabhängige Beratung führt bei uns dazu, dass nicht die Interessen der Produktpartner, sondern die der Kunden im Mittelpunkt stehen.</p>
+      <a href="#kontakt" class="contact-link">Kontaktieren Sie uns →</a>
+    </div>
+    <div class="intro-col">
+      <h3>Plötzlich berufsunfähig?</h3>
+      <p>Auf einen Schlag kann Ihr Berufsleben der Vergangenheit angehören. Die Hauptursachen sind Krankheiten des Bewegungsapparates, psychische Erkrankungen und Krankheiten des Herz-Kreislauf-Systems.<br><br>Sichern Sie sich mit einem geringen monatlichen Beitrag ab!</p>
+      <a href="#kontakt" class="contact-link">Kontaktieren Sie uns →</a>
+    </div>
+  </section>
+
+  <!-- ── LEISTUNGEN ─────────────────────────────────────── -->
+  <section class="services" id="leistungen">
+    <p class="section-label">Unsere Leistungen</p>
+    <h2 class="section-title">Drei Säulen für Ihre finanzielle Sicherheit</h2>
+    <div class="cards-grid">
+      <div class="card anim">
+        <img src="https://placehold.co/600x240/e8f2de/4d7a25?text=Absichern" alt="Absichern" class="card-img">
+        <div class="card-body">
+          <span class="card-tag">Absichern</span>
+          <div class="card-title">Versicherungsberatung</div>
+          <p class="card-desc">Umfassende Vorsorge für die ganze Familie – individuell, transparent und unabhängig.</p>
+          <ul class="card-list">
+            <li>Gesundheits- &amp; Altersvorsorge</li>
+            <li>Unfallvorsorge</li>
+            <li>Berufsunfähigkeitsversicherung</li>
+          </ul>
+          <a href="#kontakt" class="card-link">Mehr erfahren →</a>
+        </div>
+      </div>
+      <div class="card anim anim-delay-1">
+        <img src="https://placehold.co/600x240/dce8f5/2d5a8a?text=Finanzieren" alt="Finanzieren" class="card-img">
+        <div class="card-body">
+          <span class="card-tag">Finanzieren</span>
+          <div class="card-title">Finanzierungsberatung</div>
+          <p class="card-desc">Wir finden die beste Finanzierungslösung für Ihr Vorhaben – unabhängig von Banken.</p>
+          <ul class="card-list">
+            <li>Landesförderungen</li>
+            <li>Sanierungs- &amp; Bauspardarlehen</li>
+            <li>Bankdarlehen im Vergleich</li>
+          </ul>
+          <a href="#kontakt" class="card-link">Mehr erfahren →</a>
+        </div>
+      </div>
+      <div class="card anim anim-delay-2">
+        <img src="https://placehold.co/600x240/f5f0e0/7a6a25?text=Veranlagen" alt="Veranlagen" class="card-img">
+        <div class="card-body">
+          <span class="card-tag">Veranlagen</span>
+          <div class="card-title">Vermögensaufbau</div>
+          <p class="card-desc">Breites Anlageportfolio für jeden Bedarf – von konservativ bis chancenorientiert.</p>
+          <ul class="card-list">
+            <li>Fonds, Edelmetalle &amp; Immobilienfonds</li>
+            <li>Fondsgebundene Lebensversicherung</li>
+            <li>Vermögensverwaltung &amp; Beteiligungen</li>
+          </ul>
+          <a href="#kontakt" class="card-link">Mehr erfahren →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHILOSOPHIE ────────────────────────────────────── -->
+  <section class="philosophy">
+    <div class="philosophy-left anim">
+      <p class="section-label">Unsere Philosophie</p>
+      <h2 class="section-title">Warum ARGENTUM?</h2>
+      <p>Seit unserer Gründung verfolgen wir einen klaren Grundsatz: Wir beraten ausschließlich im Interesse unserer Kunden – vollkommen unabhängig von Produktpartnern oder Provisionszielen.</p>
+      <div class="quote-block">
+        <p class="quote-text">„Ein Geheimnis des Erfolgs ist, den Standpunkt des anderen zu verstehen."</p>
+        <p class="quote-author">— Henry Ford</p>
+      </div>
+      <ul class="check-list">
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+          100 % unabhängige Beratung
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Begleitung der Kunden ein Leben lang
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Gemeinsame Erarbeitung optimaler Strategien
+        </li>
+        <li>
+          <span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Vertrauen, Respekt &amp; Wertschätzung als Grundlage
+        </li>
+      </ul>
+    </div>
+    <div class="philosophy-right anim anim-delay-2">
+      <img src="https://placehold.co/700x500/e0edd6/4d7a25?text=Beratungsgespräch" alt="Beratungsgespräch bei ARGENTUM">
+    </div>
+  </section>
+
+  <!-- ── STATS ──────────────────────────────────────────── -->
+  <section class="stats-section">
+    <div class="stat-item anim">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Unabhängige<br>Beratung</div>
+    </div>
+    <div class="stat-item anim anim-delay-1">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Kernbereiche:<br>Absichern · Finanzieren · Veranlagen</div>
+    </div>
+    <div class="stat-item anim anim-delay-2">
+      <div class="stat-num">18<span>+</span></div>
+      <div class="stat-label">Kooperationspartner</div>
+    </div>
+    <div class="stat-item anim anim-delay-3">
+      <div class="stat-num"><span style="font-size:22px;display:block;line-height:1.2">seit</span>2015</div>
+      <div class="stat-label">Für unsere Kunden da</div>
+    </div>
+  </section>
+
+  <!-- ── WERTE / FEATURES ───────────────────────────────── -->
+  <section class="features-section">
+    <div class="features-header">
+      <div>
+        <p class="section-label">Unsere Werte</p>
+        <h2 class="section-title" style="margin-bottom:0">Alles aus einer Hand –<br>transparent &amp; fair.</h2>
+      </div>
+      <p style="font-size:15px;color:var(--gray);line-height:1.75;align-self:end;">Vom ersten Gespräch bis zur laufenden Betreuung – bei ARGENTUM stehen Ihre persönlichen Ziele im Mittelpunkt.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card anim">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="feature-title">Vertrauen</div>
+        <p class="feature-desc">Wir handeln stets ehrlich und transparent – und legen jede Empfehlung offen begründet vor.</p>
+      </div>
+      <div class="feature-card anim anim-delay-1">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="feature-title">Respekt</div>
+        <p class="feature-desc">Jeder Klient wird als Individuum wahrgenommen. Wir hören zu, bevor wir beraten.</p>
+      </div>
+      <div class="feature-card anim anim-delay-2">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="feature-title">Engagement</div>
+        <p class="feature-desc">Unsere Berater setzen sich persönlich für die bestmögliche Lösung für jeden Kunden ein.</p>
+      </div>
+      <div class="feature-card anim anim-delay-3">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="feature-title">Kompetenz</div>
+        <p class="feature-desc">Fundiertes Fachwissen in allen Bereichen der Finanz- und Versicherungsberatung.</p>
+      </div>
+      <div class="feature-card anim anim-delay-4">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="feature-title">Wertschätzung</div>
+        <p class="feature-desc">Langjährige Kundenbeziehungen sind unser größter Erfolg – und unser Antrieb.</p>
+      </div>
+      <div class="feature-card anim anim-delay-5">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="feature-title">Unabhängigkeit</div>
+        <p class="feature-desc">Keine Bindung an Produktpartner – wir empfehlen, was für Sie das Beste ist.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ───────────────────────────────────────────── -->
+  <section class="team-section" id="team">
+    <p class="section-label">Unser Team</p>
+    <h2 class="section-title">Menschen, denen Sie vertrauen können</h2>
+    <div class="team-grid">
+      <div class="team-card anim">
+        <img src="https://placehold.co/400x240/e0edd6/4d7a25?text=FL" alt="Franz Lebelhuber" class="team-photo">
+        <div class="team-body">
+          <div class="team-name">Franz Lebelhuber</div>
+          <div class="team-role">Executive Chief</div>
+        </div>
+      </div>
+      <div class="team-card anim anim-delay-1">
+        <img src="https://placehold.co/400x240/dce8f5/2d4a6a?text=KW" alt="Klaus Weidinger" class="team-photo">
+        <div class="team-body">
+          <div class="team-name">Klaus Weidinger</div>
+          <div class="team-role">Executive Chief</div>
+        </div>
+      </div>
+      <div class="team-card anim anim-delay-2">
+        <img src="https://placehold.co/400x240/f5f0e0/6a5a25?text=MB" alt="Margit Brandt" class="team-photo">
+        <div class="team-body">
+          <div class="team-name">Margit Brandt</div>
+          <div class="team-role">Office</div>
+        </div>
+      </div>
+      <div class="team-card anim anim-delay-3">
+        <img src="https://placehold.co/400x240/f0e8ed/6a2d4a?text=MS" alt="Maria Steiner" class="team-photo">
+        <div class="team-body">
+          <div class="team-name">Maria Steiner</div>
+          <div class="team-role">Office</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-left">
+      <p class="section-label" style="color:rgba(255,255,255,0.55)">Jetzt starten</p>
+      <h2>Bereit für Ihre<br>finanzielle Zukunft?</h2>
+      <p>Vereinbaren Sie noch heute ein unverbindliches Erstgespräch. Kein Verkaufsdruck – nur ehrliche, kompetente Beratung.</p>
+      <a href="#kontakt" class="btn-white">Kostenloses Erstgespräch</a>
+    </div>
+    <div class="cta-right">
+      <div class="cta-circle">
+        <div class="cta-circle-inner">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="cta-text">100 % unabhängig &amp; kostenlos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KOOPERATIONSPARTNER ────────────────────────────── -->
+  <section class="partners-section" id="kooperationen">
+    <p class="section-label">Kooperationspartner</p>
+    <h2 class="section-title">Starke Partner –<br>für Ihre besten Konditionen</h2>
+    <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Dank unserer Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
+    <div class="partners-grid">
+      <div class="partner-chip">Oberbank</div>
+      <div class="partner-chip">ING</div>
+      <div class="partner-chip">Allianz</div>
+      <div class="partner-chip">ERGO</div>
+      <div class="partner-chip">HDI</div>
+      <div class="partner-chip">Donau Versicherung</div>
+      <div class="partner-chip">ARAG</div>
+      <div class="partner-chip">DAS</div>
+      <div class="partner-chip">Roland</div>
+      <div class="partner-chip">InterRisk</div>
+      <div class="partner-chip">Merkur</div>
+      <div class="partner-chip">Wüstenrot</div>
+      <div class="partner-chip">Generali</div>
+      <div class="partner-chip">Zürich</div>
+      <div class="partner-chip">Start Bausparkasse</div>
+      <div class="partner-chip">FWU</div>
+      <div class="partner-chip">BNP Paribas</div>
+      <div class="partner-chip">FinanzAdmin</div>
+    </div>
+  </section>
+
+  <!-- ── KONTAKT ────────────────────────────────────────── -->
+  <section class="contact-section" id="kontakt">
+    <div class="contact-info anim">
+      <p class="section-label">Kontakt</p>
+      <h2 class="section-title">Sprechen wir über Ihre Ziele.</h2>
+      <p>Wir sind persönlich für Sie da – telefonisch, per E-Mail oder vor Ort in unserem Büro in Wels.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">Adresse</div>
+          <div class="detail-val">Maria-Theresia-Str. 41<br>4600 Wels, Österreich</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">Telefon</div>
+          <div class="detail-val"><a href="tel:+437242219990">+43 7242 219990</a></div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">E-Mail</div>
+          <div class="detail-val"><a href="mailto:office@argentum.co.at">office@argentum.co.at</a></div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">Website</div>
+          <div class="detail-val"><a href="https://www.argentum.co.at" target="_blank">www.argentum.co.at</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form anim anim-delay-2">
+      <h3>Kostenloses Erstgespräch anfragen</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vorname *</label>
+          <input type="text" placeholder="Max">
+        </div>
+        <div class="form-group">
+          <label>Nachname *</label>
+          <input type="text" placeholder="Mustermann">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-Mail-Adresse *</label>
+        <input type="email" placeholder="max@beispiel.at">
+      </div>
+      <div class="form-group">
+        <label>Telefonnummer</label>
+        <input type="tel" placeholder="+43 …">
+      </div>
+      <div class="form-group">
+        <label>Thema / Interesse</label>
+        <select>
+          <option value="">Bitte wählen …</option>
+          <option>Absichern – Versicherungsberatung</option>
+          <option>Finanzieren – Finanzierungsberatung</option>
+          <option>Veranlagen – Vermögensaufbau</option>
+          <option>Allgemeine Beratung</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ihre Nachricht</label>
+        <textarea placeholder="Beschreiben Sie kurz Ihr Anliegen …"></textarea>
+      </div>
+      <button class="btn-primary form-submit">Anfrage absenden</button>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="40" height="40" viewBox="0 0 54 54" fill="none">
+            <ellipse cx="27" cy="14" rx="11" ry="9" fill="#8ab954"/>
+            <ellipse cx="20" cy="20" rx="9" ry="8" fill="#6a9b3a"/>
+            <ellipse cx="34" cy="20" rx="9" ry="8" fill="#6a9b3a"/>
+            <ellipse cx="27" cy="24" rx="12" ry="9" fill="#8ab954"/>
+            <ellipse cx="19" cy="28" rx="8" ry="7" fill="#5a8a2d"/>
+            <ellipse cx="35" cy="28" rx="8" ry="7" fill="#5a8a2d"/>
+            <ellipse cx="27" cy="30" rx="10" ry="8" fill="#8ab954"/>
+            <rect x="24" y="36" width="6" height="12" rx="2" fill="#5a8a2d"/>
+          </svg>
+          <div>
+            <div class="footer-logo-name">ARGENTUM</div>
+            <div class="footer-logo-tag">Absichern · Finanzieren · Veranlagen</div>
+          </div>
+        </div>
+        <p>ARGENTUM GmbH – Ihr unabhängiger Finanz- und Versicherungsberater in Wels, Österreich.</p>
+        <a href="#kontakt" class="btn-primary" style="font-size:13px;padding:9px 18px;">Jetzt Kontakt aufnehmen</a>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="#leistungen">Versicherungsberatung</a></li>
+          <li><a href="#leistungen">Finanzierungsberatung</a></li>
+          <li><a href="#leistungen">Vermögensaufbau</a></li>
+          <li><a href="#leistungen">Altersvorsorge</a></li>
+          <li><a href="#leistungen">Gesundheitsvorsorge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Unternehmen</h4>
+        <ul>
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kooperationen">Kooperationen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#impressum">Impressum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+437242219990">+43 7242 219990</a></li>
+          <li><a href="mailto:office@argentum.co.at">office@argentum.co.at</a></li>
+          <li><a style="pointer-events:none;cursor:default">Maria-Theresia-Str. 41</a></li>
+          <li><a style="pointer-events:none;cursor:default">4600 Wels, Österreich</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="impressum-section" id="impressum">
+      <div class="impressum-title">Impressum &amp; Pflichtangaben</div>
+      <p class="impressum-text">
+        <strong style="color:rgba(255,255,255,0.5)">ARGENTUM GmbH</strong> · Maria-Theresia-Str. 41 · 4600 Wels · Österreich ·
+        Tel.: +43 7242 219990 · E-Mail: office@argentum.co.at · Web: www.argentum.co.at ·
+        Firmenbuchnummer: FN 440241p · Firmenbuchgericht: Landesgericht Wels ·
+        Geschäftsführer: Franz Lebelhuber, Klaus Weidinger ·
+        Branche: Finanz- und Vermögensberatung, Versicherungsmakler ·
+        GISA-Zahlen: 28144618 (Versicherungsvermittlung) und 28132387 (Gewerbliche Vermögensberatung) ·
+        Konzessionierter WAG-2018-Partner: FinanzAdmin Wertpapierdienstleistungen GmbH ·
+        Zuständige Behörde: Bezirkshauptmannschaft Wels-Land · Aufsichtsbehörde: FMA (Finanzmarktaufsicht) ·
+        Mitglied der Wirtschaftskammer Österreich (WKO)
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 ARGENTUM GmbH. Alle Rechte vorbehalten.</p>
+      <div class="footer-bottom-links">
+        <a href="#impressum">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── BACKGROUND PATHS ANIMATION ───────────────────── -->
+  <script>
+  (function () {
+    const NS      = 'http://www.w3.org/2000/svg';
+    const VIEWBOX = '0 0 696 316';
+    /* Green brand palette for the paths */
+    const COLORS  = ['#6a9b3a','#5a8a2d','#4d7a25','#8ab954','#3d6a1e'];
+
+    /* ── Build one SVG layer with N paths ─────────────────
+       All animation is ONLY opacity + transform (GPU-only,
+       zero layout/paint cost → smooth scroll).              */
+    function buildLayer(containerId, position, driftAnim, driftDur) {
+      const wrap = document.getElementById(containerId);
+      if (!wrap) return;
+
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', VIEWBOX);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.setAttribute('fill', 'none');
+      /* GPU layer for the whole SVG via drift animation */
+      svg.style.cssText = `width:100%;height:100%;display:block;
+        animation:${driftAnim} ${driftDur}s ease-in-out infinite;
+        will-change:transform;`;
+      wrap.appendChild(svg);
+
+      /* 18 paths per layer (36 total) – enough visual density */
+      const COUNT = 18;
+      for (let i = 0; i < COUNT; i++) {
+        const d = [
+          `M-${380 - i * 5 * position} -${189 + i * 6}`,
+          `C-${380 - i * 5 * position} -${189 + i * 6}`,
+          `-${312 - i * 5 * position} ${216 - i * 6}`,
+          `${152 - i * 5 * position} ${343 - i * 6}`,
+          `C${616 - i * 5 * position} ${470 - i * 6}`,
+          `${684 - i * 5 * position} ${875 - i * 6}`,
+          `${684 - i * 5 * position} ${875 - i * 6}`
+        ].join(' ');
+
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', COLORS[i % COLORS.length]);
+        path.setAttribute('stroke-width', String(0.5 + i * 0.055));
+
+        /* Static dasharray – 35% visible segment, no animated dashoffset */
+        const totalLen = 1800; /* approximate – avoids getTotalLength() layout thrash */
+        const dash = totalLen * 0.35;
+        path.setAttribute('stroke-dasharray', `${dash} ${totalLen - dash}`);
+
+        /* Opacity pulse – the ONLY property animated (GPU composited) */
+        const lo  = 0.06 + i * 0.015;
+        const hi  = Math.min(lo * 3.2, 0.45);
+        const dur = 6 + i * 0.6 + (position > 0 ? 0 : 1.3);
+        const del = -(i * 0.55 + (position > 0 ? 0 : 2.1));
+
+        path.style.cssText = `
+          --p-lo:${lo.toFixed(3)};
+          --p-hi:${hi.toFixed(3)};
+          will-change:opacity;
+          animation: bp-path-pulse ${dur.toFixed(1)}s ease-in-out ${del.toFixed(1)}s infinite;
+        `;
+        svg.appendChild(path);
+      }
+    }
+
+    buildLayer('bp-layer-a',  1, 'bp-drift-a', 40);
+    buildLayer('bp-layer-b', -1, 'bp-drift-b', 52);
+
+    /* ── Letter-by-letter title ───────────────────────────
+       Uses CSS transition (GPU transform+opacity) per letter  */
+    const TITLE_LINES = ['Ihre Finanzen.', 'Ihr Leben.', 'Ihre Zukunft.'];
+    const titleWrap   = document.getElementById('bp-title-wrap');
+    let gi = 0; /* global letter index for stagger */
+
+    TITLE_LINES.forEach(line => {
+      const lineDiv = document.createElement('div');
+      lineDiv.style.display = 'block';
+
+      line.split(' ').forEach((word, wi, arr) => {
+        const ws = document.createElement('span');
+        ws.className = 'bp-word';
+
+        word.split('').forEach(ch => {
+          const ls = document.createElement('span');
+          ls.className   = 'bp-letter';
+          ls.textContent = ch;
+          /* Spring cubic-bezier + staggered delay */
+          const delay = 180 + gi * 35;
+          ls.style.transition =
+            `opacity 0.38s ease ${delay}ms,
+             transform 0.52s cubic-bezier(0.34,1.56,0.64,1) ${delay}ms`;
+          gi++;
+          ws.appendChild(ls);
+        });
+
+        lineDiv.appendChild(ws);
+        if (wi < arr.length - 1) lineDiv.appendChild(document.createTextNode('\u00A0'));
+      });
+
+      titleWrap.appendChild(lineDiv);
+    });
+
+    /* ── Trigger on DOMContentLoaded (earlier than load) ── */
+    function reveal() {
+      document.querySelectorAll('.bp-letter').forEach(el => {
+        el.style.opacity   = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      ['bp-eyebrow','bp-subtitle','bp-btn-outer','bp-scroll-hint']
+        .forEach(id => document.getElementById(id)?.classList.add('bp-visible'));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(reveal, 60));
+    } else {
+      setTimeout(reveal, 60);
+    }
+  })();
+  </script>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.anim:not(.visible)').forEach(el => el.classList.add('visible'));
+      }, 200);
+    });
+  </script>
+
+</body>
+</html>
