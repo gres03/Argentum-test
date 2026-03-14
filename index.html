@@ -156,15 +156,125 @@
     .hero-img {
       position: relative;
       overflow: hidden;
+      background: linear-gradient(150deg, #f4f9ed 0%, #e8f5d8 50%, #edf7e2 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
     }
 
-    .hero-img img {
+    .hero-pattern-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-pattern-svg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
-      min-height: 380px;
+      opacity: 0;
+      transition: opacity 2s ease;
     }
+
+    .hero-pattern-svg.active { opacity: 1; }
+
+    .hero-text-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 48px 48px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease 0.05s, transform 0.6s ease 0.05s;
+    }
+
+    .hero-eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-main-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+      font-weight: 900;
+      color: var(--green-dark);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+
+    .hero-title-word { display: inline-block; margin: 0 3px; }
+
+    .hero-title-sep {
+      display: inline-block;
+      color: var(--green);
+      opacity: 0;
+      font-weight: 300;
+      margin: 0 4px;
+      transform: translateY(28px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .hero-title-sep.visible { opacity: 0.45; transform: translateY(0); }
+
+    .hero-letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .hero-letter.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-tagline {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 340px;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.7s ease 1.5s, transform 0.7s ease 1.5s;
+    }
+
+    .hero-tagline.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-pattern-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 3;
+    }
+
+    .hero-pattern-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      opacity: 0.2;
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .hero-pattern-dot.active { opacity: 0.65; transform: scale(1.35); }
 
     .hero-aside {
       background: var(--green);
@@ -187,19 +297,84 @@
       border-right: 22px solid var(--green);
     }
 
+    .hero-aside-pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin-bottom: 18px;
+    }
+
     .hero-aside-label {
       font-family: Georgia, 'Times New Roman', serif;
-      font-size: 26px;
+      font-size: 32px;
       font-style: italic;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 20px;
-      line-height: 1.3;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.25;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.3);
     }
 
     .hero-aside-text {
-      font-size: 16px;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.75;
+      font-size: 15.5px;
+      color: rgba(255,255,255,0.95);
+      line-height: 1.8;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+      margin-bottom: 28px;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--green-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 13px 24px;
+      text-decoration: none;
+      border: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .hero-btn-primary:hover { background: #f0fae8; transform: translateY(-2px); }
+    .hero-btn-primary:active { transform: translateY(0); }
+
+    .hero-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 11px 24px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.55);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .hero-btn-secondary:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-1px);
     }
 
     /* ── BREADCRUMB ─────────────────────────────────────── */
@@ -397,7 +572,7 @@
 
     /* ── PHILOSOPHY ─────────────────────────────────────── */
     .philosophy {
-      padding: 72px 60px;
+      padding: 100px 60px 72px;
       background: var(--white);
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1005,203 +1180,49 @@
 
     .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
 
-    /* ── BACKGROUND PATHS HERO ─────────────────────────── */
-    #bp-hero {
-      position: relative;
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #f8faf6; /* very faint green tint */
-    }
-
-    /* Two SVG layers – animated via transform+opacity only (GPU compositor) */
-    .bp-svg-layer {
+    /* ── HERO BACKGROUND PATHS ──────────────────────────── */
+    .hero-aside { position: relative; overflow: hidden; }
+    #hero-paths-aside {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      will-change: transform;
+      z-index: 0;
     }
+    #hero-paths-aside svg {
+      width: 100%; height: 100%; display: block;
+    }
+    .hero-aside-pill,
+    .hero-aside-label,
+    .hero-aside-text,
+    .hero-cta-wrap,
+    .hero-aside a { position: relative; z-index: 2; }
 
-    .bp-svg-layer svg {
-      width: 100%;
-      height: 100%;
-      display: block;
+    @keyframes hpFade {
+      0%, 100% { opacity: var(--lo); }
+      50%       { opacity: var(--hi); }
     }
-
-    /* Slow gentle drift for each layer — pure transform, zero repaint */
-    @keyframes bp-drift-a {
-      0%   { transform: translate(0px,  0px); }
-      25%  { transform: translate(-18px, -10px); }
-      50%  { transform: translate(-8px,  16px); }
-      75%  { transform: translate(14px,   4px); }
-      100% { transform: translate(0px,   0px); }
-    }
-    @keyframes bp-drift-b {
-      0%   { transform: translate(0px,  0px); }
-      25%  { transform: translate(16px,  12px); }
-      50%  { transform: translate(6px,  -18px); }
-      75%  { transform: translate(-12px, -6px); }
-      100% { transform: translate(0px,   0px); }
-    }
-
-    /* Individual path fade — opacity only (GPU) */
-    @keyframes bp-path-pulse {
-      0%, 100% { opacity: var(--p-lo); }
-      50%       { opacity: var(--p-hi); }
-    }
-
-    /* Content card — glass panel for legibility */
-    .bp-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 56px 64px 52px;
-      max-width: 860px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(106,155,58,0.18);
-      border-radius: 28px;
-      box-shadow:
-        0 2px 0 rgba(255,255,255,0.9) inset,
-        0 20px 60px rgba(26,46,74,0.08),
-        0 4px 16px rgba(106,155,58,0.08);
-    }
-
-    .bp-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 24px;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .bp-eyebrow.bp-visible { opacity: 1; transform: translateY(0); }
-
-    .bp-title-wrap {
-      font-size: clamp(52px, 7.5vw, 96px);
-      font-weight: 700;
-      letter-spacing: -0.035em;
-      line-height: 1.05;
-      margin-bottom: 28px;
-    }
-
-    .bp-word {
-      display: inline-block;
-      margin-right: 0.2em;
-    }
-    .bp-word:last-child { margin-right: 0; }
-
-    .bp-letter {
-      display: inline-block;
-      color: var(--charcoal);
-      opacity: 0;
-      transform: translateY(70px);
-    }
-
-    .bp-subtitle {
-      font-size: 18px;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .bp-subtitle.bp-visible { opacity: 1; transform: translateY(0); }
-
-    .bp-btn-outer {
-      display: inline-block;
-      border-radius: 14px;
-      padding: 1.5px;
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      box-shadow: 0 4px 20px rgba(106,155,58,0.35);
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
-    }
-    .bp-btn-outer.bp-visible { opacity: 1; transform: translateY(0); }
-    .bp-btn-outer:hover { box-shadow: 0 8px 32px rgba(106,155,58,0.45); }
-
-    .bp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 32px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      background: var(--green);
-      border-radius: 12.5px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .bp-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
-
-    .bp-btn-arrow {
-      display: inline-block;
-      opacity: 0.8;
-      transition: transform 0.25s, opacity 0.25s;
-    }
-    .bp-btn:hover .bp-btn-arrow { transform: translateX(4px); opacity: 1; }
-
-    .bp-scroll-hint {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      transition: opacity 0.7s ease 2.2s;
-    }
-    .bp-scroll-hint.bp-visible { opacity: 0.38; }
-
-    .bp-scroll-hint span {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-    }
-
-    .bp-scroll-dot {
-      width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, var(--green), transparent);
-      animation: scrollDot 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollDot {
-      0%, 100% { opacity: 0.3; transform: scaleY(0.5) translateY(-6px); }
-      50%       { opacity: 1;   transform: scaleY(1)   translateY(6px); }
+    @keyframes hpDrift {
+      0%   { transform: translate(0px, 0px); }
+      33%  { transform: translate(-12px, 8px); }
+      66%  { transform: translate(8px, -10px); }
+      100% { transform: translate(0px, 0px); }
     }
 
     /* ── ANIMATIONS ─────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* Transition-based — final state locks in, never reverts on hover/click */
+    .anim {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
     }
+    .anim.visible { opacity: 1; transform: translateY(0); }
 
-    .anim { opacity: 0; }
-    .anim.visible {
-      animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .anim-delay-1 { animation-delay: 0.08s; }
-    .anim-delay-2 { animation-delay: 0.16s; }
-    .anim-delay-3 { animation-delay: 0.24s; }
-    .anim-delay-4 { animation-delay: 0.32s; }
-    .anim-delay-5 { animation-delay: 0.40s; }
+    .anim-delay-1 { transition-delay: 0.08s; }
+    .anim-delay-2 { transition-delay: 0.16s; }
+    .anim-delay-3 { transition-delay: 0.24s; }
+    .anim-delay-4 { transition-delay: 0.32s; }
+    .anim-delay-5 { transition-delay: 0.40s; }
 
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -1268,28 +1289,6 @@
     <a href="#kontakt" class="btn-primary">Beratungsgespräch</a>
   </nav>
 
-  <!-- ── BACKGROUND PATHS HERO ────────────────────────── -->
-  <section id="bp-hero">
-    <div class="bp-svg-layer" id="bp-layer-a"></div>
-    <div class="bp-svg-layer" id="bp-layer-b"></div>
-
-    <div class="bp-content">
-      <p class="bp-eyebrow" id="bp-eyebrow">Unabhängige Finanzberatung · Wels, Österreich</p>
-      <div class="bp-title-wrap" id="bp-title-wrap" aria-label="Ihre Finanzen. Ihr Leben. Ihre Zukunft."></div>
-      <p class="bp-subtitle" id="bp-subtitle">Seit Jahren an Ihrer Seite – mit Kompetenz, Vertrauen und 100&nbsp;% Unabhängigkeit.</p>
-      <div class="bp-btn-outer" id="bp-btn-outer">
-        <a href="#leistungen" class="bp-btn">
-          <span>Unsere Leistungen entdecken</span>
-          <span class="bp-btn-arrow">→</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="bp-scroll-hint" id="bp-scroll-hint">
-      <span>Scrollen</span>
-      <div class="bp-scroll-dot"></div>
-    </div>
-  </section>
 
   <!-- ── BREADCRUMB ────────────────────────────────────── -->
   <div class="breadcrumb">
@@ -1299,17 +1298,37 @@
   <!-- ── HERO ──────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-img">
-      <img src="https://placehold.co/900x440/e8f0e0/4d7a25?text=Familie+%2F+Sicherheit+%2F+Zukunft" alt="Familie und finanzielle Sicherheit">
+      <div id="hero-pattern-bg" class="hero-pattern-bg" aria-hidden="true"></div>
+      <div class="hero-text-overlay">
+        <p class="hero-eyebrow">Finanzberatung &middot; Wels, Österreich</p>
+        <h1 class="hero-main-title">
+          <span class="hero-title-word">Familie</span><span class="hero-title-sep">&nbsp;/</span>
+          <span class="hero-title-word">Sicherheit</span><span class="hero-title-sep">&nbsp;/</span>
+          <span class="hero-title-word">Zukunft</span>
+        </h1>
+        <p class="hero-tagline">Ihr unabhängiger Partner für Versicherung, private Vorsorge und Vermögensaufbau.</p>
+      </div>
+      <div class="hero-pattern-dots">
+        <span class="hero-pattern-dot"></span>
+        <span class="hero-pattern-dot"></span>
+        <span class="hero-pattern-dot"></span>
+        <span class="hero-pattern-dot"></span>
+      </div>
     </div>
     <div class="hero-aside">
+      <div id="hero-paths-aside" aria-hidden="true"></div>
+      <span class="hero-aside-pill">Ihre Absicherung</span>
       <div class="hero-aside-label">Wussten Sie&nbsp;…</div>
       <p class="hero-aside-text">… dass bei Verlust der Arbeitskraft für die Betroffenen massive finanzielle Einbußen entstehen können.<br><br>Auf einen Schlag kann Ihr Berufsleben der Vergangenheit angehören. Sichern Sie sich mit einem geringen monatlichen Beitrag ab!</p>
-      <a href="#kontakt" style="display:inline-block;margin-top:24px;font-size:14px;font-weight:700;color:#fff;text-decoration:underline;">Kontaktieren Sie uns →</a>
+      <div class="hero-cta-wrap">
+        <a href="#kontakt" class="hero-btn-primary">Beratungsgespräch vereinbaren →</a>
+        <a href="#leistungen" class="hero-btn-secondary">Unsere Leistungen entdecken</a>
+      </div>
     </div>
   </section>
 
   <!-- ── INTRO 3-COL ───────────────────────────────────── -->
-  <section class="intro-section" id="ueber-uns">
+  <section class="intro-section">
     <div>
       <p class="intro-quote">
         „Ein Geheimnis des Erfolgs ist, den Standpunkt des anderen zu verstehen."
@@ -1380,7 +1399,7 @@
   </section>
 
   <!-- ── PHILOSOPHIE ────────────────────────────────────── -->
-  <section class="philosophy">
+  <section class="philosophy" id="ueber-uns">
     <div class="philosophy-left anim">
       <p class="section-label">Unsere Philosophie</p>
       <h2 class="section-title">Warum ARGENTUM?</h2>
@@ -1722,123 +1741,218 @@
     </div>
   </footer>
 
-  <!-- ── BACKGROUND PATHS ANIMATION ───────────────────── -->
+
   <script>
-  (function () {
-    const NS      = 'http://www.w3.org/2000/svg';
-    const VIEWBOX = '0 0 696 316';
-    /* Green brand palette for the paths */
-    const COLORS  = ['#6a9b3a','#5a8a2d','#4d7a25','#8ab954','#3d6a1e'];
+  /* ── Hero title letter animation + cycling background patterns ── */
+  (function() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var G1 = '#4a7a1e', G2 = '#6a9b3a', G3 = '#9ac860', G4 = '#c8e8a0';
 
-    /* ── Build one SVG layer with N paths ─────────────────
-       All animation is ONLY opacity + transform (GPU-only,
-       zero layout/paint cost → smooth scroll).              */
-    function buildLayer(containerId, position, driftAnim, driftDur) {
-      const wrap = document.getElementById(containerId);
-      if (!wrap) return;
+    /* ── Letter-by-letter animation ── */
+    var titleEl = document.querySelector('.hero-main-title');
+    var eyebrow  = document.querySelector('.hero-eyebrow');
+    var tagline  = document.querySelector('.hero-tagline');
 
-      const svg = document.createElementNS(NS, 'svg');
-      svg.setAttribute('viewBox', VIEWBOX);
+    if (titleEl) {
+      var words = titleEl.querySelectorAll('.hero-title-word');
+      var seps  = titleEl.querySelectorAll('.hero-title-sep');
+      var allLetters = [];
+
+      words.forEach(function(word, wi) {
+        var text = word.textContent;
+        word.textContent = '';
+        text.split('').forEach(function(ch, li) {
+          var sp = document.createElement('span');
+          sp.className = 'hero-letter';
+          sp.textContent = ch === ' ' ? '\u00a0' : ch;
+          word.appendChild(sp);
+          allLetters.push({ el: sp, delay: wi * 130 + li * 48 });
+        });
+      });
+
+      setTimeout(function() {
+        if (eyebrow) eyebrow.classList.add('visible');
+        allLetters.forEach(function(l) {
+          setTimeout(function() { l.el.classList.add('visible'); }, l.delay);
+        });
+        var lastDelay = allLetters.length ? allLetters[allLetters.length - 1].delay : 0;
+        seps.forEach(function(sep, si) {
+          setTimeout(function() { sep.classList.add('visible'); }, si * 130 + 120);
+        });
+        if (tagline) tagline.classList.add('visible');
+      }, 80);
+    }
+
+    /* ── Pattern SVG factories ── */
+    function makeFlow() {
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 800 480');
       svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
       svg.setAttribute('fill', 'none');
-      /* GPU layer for the whole SVG via drift animation */
-      svg.style.cssText = `width:100%;height:100%;display:block;
-        animation:${driftAnim} ${driftDur}s ease-in-out infinite;
-        will-change:transform;`;
+      svg.classList.add('hero-pattern-svg');
+      for (var i = 0; i < 14; i++) {
+        var y0 = i * 40 - 30;
+        var amp = 28 + i * 4;
+        var d = 'M-60,' + y0 + ' C200,' + (y0 - amp) + ' 600,' + (y0 + amp) + ' 860,' + y0;
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d);
+        p.setAttribute('stroke', i % 3 === 0 ? G1 : i % 3 === 1 ? G2 : G3);
+        p.setAttribute('stroke-width', (0.6 + i * 0.12).toFixed(2));
+        p.setAttribute('stroke-linecap', 'round');
+        var lo = 0.03 + i * 0.008, hi = lo + 0.1;
+        p.style.cssText = '--lo:' + lo + ';--hi:' + hi + ';animation:hpFade ' + (8 + i * 1.2) + 's ease-in-out -' + (i * 0.7) + 's infinite;';
+        svg.appendChild(p);
+      }
+      return svg;
+    }
+
+    function makeGeometric() {
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 800 480');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.setAttribute('fill', 'none');
+      svg.classList.add('hero-pattern-svg');
+      var cw = 72, ch = 56;
+      var idx = 0;
+      for (var c = 0; c * cw < 840; c++) {
+        for (var r = 0; r * ch < 520; r++) {
+          if (Math.random() > 0.62) {
+            var x = c * cw, y = r * ch;
+            var p = document.createElementNS(NS, 'rect');
+            p.setAttribute('x', x); p.setAttribute('y', y);
+            p.setAttribute('width', cw); p.setAttribute('height', ch);
+            p.setAttribute('stroke', idx % 2 === 0 ? G2 : G4);
+            p.setAttribute('stroke-width', '0.75');
+            var lo = 0.02, hi = 0.12 + Math.random() * 0.1;
+            var dur = 5 + Math.random() * 6, del = Math.random() * 9;
+            p.style.cssText = '--lo:' + lo + ';--hi:' + hi + ';animation:hpFade ' + dur + 's ease-in-out -' + del + 's infinite;';
+            svg.appendChild(p);
+            idx++;
+          }
+        }
+      }
+      return svg;
+    }
+
+    function makeNeural() {
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 800 480');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.setAttribute('fill', 'none');
+      svg.classList.add('hero-pattern-svg');
+      var nodes = [];
+      for (var n = 0; n < 38; n++) nodes.push({ x: Math.random() * 800, y: Math.random() * 480 });
+      nodes.forEach(function(a, i) {
+        nodes.forEach(function(b, j) {
+          if (j <= i) return;
+          var dx = a.x - b.x, dy = a.y - b.y;
+          if (Math.sqrt(dx*dx + dy*dy) < 125 && Math.random() > 0.48) {
+            var line = document.createElementNS(NS, 'line');
+            line.setAttribute('x1', a.x.toFixed(1)); line.setAttribute('y1', a.y.toFixed(1));
+            line.setAttribute('x2', b.x.toFixed(1)); line.setAttribute('y2', b.y.toFixed(1));
+            line.setAttribute('stroke', G3); line.setAttribute('stroke-width', '0.55');
+            var lo = 0.03, hi = 0.16, dur = 5 + Math.random() * 7, del = Math.random() * 10;
+            line.style.cssText = '--lo:' + lo + ';--hi:' + hi + ';animation:hpFade ' + dur + 's ease-in-out -' + del + 's infinite;';
+            svg.appendChild(line);
+          }
+        });
+        var dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('cx', nodes[i].x.toFixed(1)); dot.setAttribute('cy', nodes[i].y.toFixed(1));
+        dot.setAttribute('r', '2.2'); dot.setAttribute('fill', G2);
+        var lo = 0.1, hi = 0.5, dur = 3 + Math.random() * 5, del = Math.random() * 6;
+        dot.style.cssText = '--lo:' + lo + ';--hi:' + hi + ';animation:hpFade ' + dur + 's ease-in-out -' + del + 's infinite;';
+        svg.appendChild(dot);
+      });
+      return svg;
+    }
+
+    function makeSpiral() {
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 800 480');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.setAttribute('fill', 'none');
+      svg.classList.add('hero-pattern-svg');
+      var centers = [{x:140,y:160},{x:550,y:110},{x:320,y:350},{x:680,y:370},{x:70,y:380},{x:730,y:240}];
+      centers.forEach(function(c, ci) {
+        var turns = 3.5, maxR = 58 + ci * 10;
+        var d = 'M' + (c.x + maxR) + ',' + c.y;
+        for (var a = 0; a <= turns * 360; a += 5) {
+          var rad = a * Math.PI / 180;
+          var r = maxR * (1 - a / (turns * 360 + 1));
+          d += ' L' + (c.x + r * Math.cos(rad)).toFixed(1) + ',' + (c.y + r * Math.sin(rad)).toFixed(1);
+        }
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d);
+        p.setAttribute('stroke', ci % 2 === 0 ? G1 : G3);
+        p.setAttribute('stroke-width', '1');
+        p.setAttribute('stroke-linecap', 'round');
+        var lo = 0.04, hi = 0.2, dur = 10 + ci * 2, del = ci * 2;
+        p.style.cssText = '--lo:' + lo + ';--hi:' + hi + ';animation:hpFade ' + dur + 's ease-in-out -' + del + 's infinite;';
+        svg.appendChild(p);
+      });
+      return svg;
+    }
+
+    /* ── Build all 4 patterns and cycle ── */
+    var patternWrap = document.getElementById('hero-pattern-bg');
+    if (!patternWrap) return;
+
+    var patterns = [makeFlow(), makeGeometric(), makeNeural(), makeSpiral()];
+    patterns.forEach(function(s) { patternWrap.appendChild(s); });
+
+    var dots = document.querySelectorAll('.hero-pattern-dot');
+    var current = 0;
+
+    function activate(idx) {
+      patterns.forEach(function(s, i) { s.classList.toggle('active', i === idx); });
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+    }
+
+    activate(0);
+    setInterval(function() { current = (current + 1) % 4; activate(current); }, 12000);
+  })();
+
+  /* ── Hero aside paths — white tones on green, opacity+drift only ── */
+  (function() {
+    var wrap = document.getElementById('hero-paths-aside');
+    if (!wrap) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var COLORS = ['#ffffff','#e8f5d8','#c8e8a0','#f0fae8','#b8dda0'];
+
+    /* One SVG per "direction" so we can drift them independently */
+    [1, -1].forEach(function(dir, gi) {
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 696 316');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      svg.setAttribute('fill', 'none');
+      /* Slow drift on the whole SVG — single transform, no per-path cost */
+      var driftDur = dir > 0 ? 28 : 36;
+      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;'
+        + 'animation:hpDrift '+driftDur+'s ease-in-out '+(gi*-7)+'s infinite;';
       wrap.appendChild(svg);
 
-      /* 18 paths per layer (36 total) – enough visual density */
-      const COUNT = 18;
-      for (let i = 0; i < COUNT; i++) {
-        const d = [
-          `M-${380 - i * 5 * position} -${189 + i * 6}`,
-          `C-${380 - i * 5 * position} -${189 + i * 6}`,
-          `-${312 - i * 5 * position} ${216 - i * 6}`,
-          `${152 - i * 5 * position} ${343 - i * 6}`,
-          `C${616 - i * 5 * position} ${470 - i * 6}`,
-          `${684 - i * 5 * position} ${875 - i * 6}`,
-          `${684 - i * 5 * position} ${875 - i * 6}`
-        ].join(' ');
-
-        const path = document.createElementNS(NS, 'path');
+      for (var i = 0; i < 10; i++) {
+        var d = 'M-'+(380-i*5*dir)+' -'+(189+i*6)
+          +'C-'+(380-i*5*dir)+' -'+(189+i*6)
+          +' -'+(312-i*5*dir)+' '+(216-i*6)
+          +' '+(152-i*5*dir)+' '+(343-i*6)
+          +'C'+(616-i*5*dir)+' '+(470-i*6)
+          +' '+(684-i*5*dir)+' '+(875-i*6)
+          +' '+(684-i*5*dir)+' '+(875-i*6);
+        var path = document.createElementNS(NS, 'path');
         path.setAttribute('d', d);
-        path.setAttribute('fill', 'none');
         path.setAttribute('stroke', COLORS[i % COLORS.length]);
-        path.setAttribute('stroke-width', String(0.5 + i * 0.055));
-
-        /* Static dasharray – 35% visible segment, no animated dashoffset */
-        const totalLen = 1800; /* approximate – avoids getTotalLength() layout thrash */
-        const dash = totalLen * 0.35;
-        path.setAttribute('stroke-dasharray', `${dash} ${totalLen - dash}`);
-
-        /* Opacity pulse – the ONLY property animated (GPU composited) */
-        const lo  = 0.06 + i * 0.015;
-        const hi  = Math.min(lo * 3.2, 0.45);
-        const dur = 6 + i * 0.6 + (position > 0 ? 0 : 1.3);
-        const del = -(i * 0.55 + (position > 0 ? 0 : 2.1));
-
-        path.style.cssText = `
-          --p-lo:${lo.toFixed(3)};
-          --p-hi:${hi.toFixed(3)};
-          will-change:opacity;
-          animation: bp-path-pulse ${dur.toFixed(1)}s ease-in-out ${del.toFixed(1)}s infinite;
-        `;
+        path.setAttribute('stroke-width', (0.7 + i * 0.12).toFixed(2));
+        path.setAttribute('fill', 'none');
+        var lo  = (0.10 + i * 0.02).toFixed(3);
+        var hi  = (0.30 + i * 0.025).toFixed(3);
+        var dur = (14 + i * 1.5).toFixed(1);
+        var del = (-(i * 1.1 + gi * 3)).toFixed(1);
+        path.style.cssText = '--lo:'+lo+';--hi:'+hi
+          +';animation:hpFade '+dur+'s ease-in-out '+del+'s infinite;';
         svg.appendChild(path);
       }
-    }
-
-    buildLayer('bp-layer-a',  1, 'bp-drift-a', 40);
-    buildLayer('bp-layer-b', -1, 'bp-drift-b', 52);
-
-    /* ── Letter-by-letter title ───────────────────────────
-       Uses CSS transition (GPU transform+opacity) per letter  */
-    const TITLE_LINES = ['Ihre Finanzen.', 'Ihr Leben.', 'Ihre Zukunft.'];
-    const titleWrap   = document.getElementById('bp-title-wrap');
-    let gi = 0; /* global letter index for stagger */
-
-    TITLE_LINES.forEach(line => {
-      const lineDiv = document.createElement('div');
-      lineDiv.style.display = 'block';
-
-      line.split(' ').forEach((word, wi, arr) => {
-        const ws = document.createElement('span');
-        ws.className = 'bp-word';
-
-        word.split('').forEach(ch => {
-          const ls = document.createElement('span');
-          ls.className   = 'bp-letter';
-          ls.textContent = ch;
-          /* Spring cubic-bezier + staggered delay */
-          const delay = 180 + gi * 35;
-          ls.style.transition =
-            `opacity 0.38s ease ${delay}ms,
-             transform 0.52s cubic-bezier(0.34,1.56,0.64,1) ${delay}ms`;
-          gi++;
-          ws.appendChild(ls);
-        });
-
-        lineDiv.appendChild(ws);
-        if (wi < arr.length - 1) lineDiv.appendChild(document.createTextNode('\u00A0'));
-      });
-
-      titleWrap.appendChild(lineDiv);
     });
-
-    /* ── Trigger on DOMContentLoaded (earlier than load) ── */
-    function reveal() {
-      document.querySelectorAll('.bp-letter').forEach(el => {
-        el.style.opacity   = '1';
-        el.style.transform = 'translateY(0)';
-      });
-      ['bp-eyebrow','bp-subtitle','bp-btn-outer','bp-scroll-hint']
-        .forEach(id => document.getElementById(id)?.classList.add('bp-visible'));
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => setTimeout(reveal, 60));
-    } else {
-      setTimeout(reveal, 60);
-    }
   })();
   </script>
 
@@ -1858,6 +1972,14 @@
       setTimeout(() => {
         document.querySelectorAll('.anim:not(.visible)').forEach(el => el.classList.add('visible'));
       }, 200);
+    });
+
+    /* Logo + Home → smooth scroll to top */
+    document.querySelectorAll('a[href="#top"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     });
   </script>
 
