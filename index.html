@@ -1270,6 +1270,17 @@
     .anim-delay-4 { transition-delay: 0.32s; }
     .anim-delay-5 { transition-delay: 0.40s; }
 
+    /* ── SHIMMER BUTTON ─────────────────────────────────── */
+    .shimmer-btn { position: relative; }
+    .shimmer-svg {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 1;
+    }
+
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1024px) {
       .team-grid { grid-template-columns: repeat(2,1fr); }
@@ -2080,5 +2091,76 @@
     });
   </script>
 
+  <script>
+    (function () {
+      var NS = 'http://www.w3.org/2000/svg';
+
+      function addShimmer(el) {
+        var bcr = el.getBoundingClientRect();
+        var W = bcr.width, H = bcr.height;
+        if (!W || !H) return;
+
+        var r = 6;
+        var perim = 2 * (W - 2 * r) + 2 * (H - 2 * r) + 2 * Math.PI * r;
+        var seg   = perim * 0.22;
+        var gap   = perim - seg;
+        var dur   = (perim / 100).toFixed(2); // constant 100 px/s
+
+        var isWhite = el.classList.contains('btn-white') || el.classList.contains('hero-btn-primary');
+        var glowColor = isWhite ? '#6a9b3a' : '#ffffff';
+        var baseColor = isWhite ? 'rgba(74,122,37,0.22)' : 'rgba(255,255,255,0.20)';
+
+        var fid    = 'sf' + Math.random().toString(36).slice(2, 7);
+        var kfName = 'sk' + Math.random().toString(36).slice(2, 7);
+
+        var styleEl = document.createElement('style');
+        styleEl.textContent =
+          '@keyframes ' + kfName + '{' +
+          'from{stroke-dashoffset:0}' +
+          'to{stroke-dashoffset:-' + perim.toFixed(1) + '}}';
+        document.head.appendChild(styleEl);
+
+        var svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('width',  W + 4);
+        svg.setAttribute('height', H + 4);
+        svg.classList.add('shimmer-svg');
+        svg.style.cssText = 'position:absolute;top:-2px;left:-2px;pointer-events:none;overflow:visible;z-index:1;';
+
+        svg.innerHTML =
+          '<defs>' +
+            '<filter id="' + fid + '" x="-50%" y="-50%" width="200%" height="200%">' +
+              '<feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>' +
+              '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>' +
+            '</filter>' +
+          '</defs>' +
+          '<rect x="2" y="2" width="' + W + '" height="' + H + '" rx="' + r + '" ry="' + r + '"' +
+            ' fill="none" stroke="' + baseColor + '" stroke-width="1.5"/>' +
+          '<rect x="2" y="2" width="' + W + '" height="' + H + '" rx="' + r + '" ry="' + r + '"' +
+            ' fill="none" stroke="' + glowColor + '" stroke-width="2.5"' +
+            ' stroke-linecap="round"' +
+            ' stroke-dasharray="' + seg.toFixed(1) + ' ' + gap.toFixed(1) + '"' +
+            ' stroke-dashoffset="0"' +
+            ' filter="url(#' + fid + ')"' +
+            ' style="animation:' + kfName + ' ' + dur + 's linear infinite"/>';
+
+        el.style.position = 'relative';
+        el.classList.add('shimmer-btn');
+        el.appendChild(svg);
+      }
+
+      function initShimmer() {
+        document.querySelectorAll('.shimmer-svg').forEach(function (s) { s.remove(); });
+        document.querySelectorAll('.btn-primary, .btn-white, .hero-btn-primary').forEach(addShimmer);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initShimmer);
+      } else {
+        initShimmer();
+      }
+
+      window.addEventListener('resize', initShimmer);
+    })();
+  </script>
 </body>
 </html>
