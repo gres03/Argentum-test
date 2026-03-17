@@ -763,7 +763,8 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 240px));
+      justify-content: center;
       gap: 22px;
       margin-top: 44px;
     }
@@ -783,10 +784,13 @@
 
     .team-photo {
       width: 100%;
-      height: 190px;
+      aspect-ratio: 1 / 1;
+      height: auto;
       object-fit: cover;
+      object-position: center top;
       display: block;
-      background: var(--gray-pale);
+      image-rendering: -webkit-optimize-contrast;
+      filter: contrast(1.15) saturate(1.08);
     }
 
     .team-body {
@@ -918,34 +922,76 @@
 
     /* ── PARTNERS ────────────────────────────────────────── */
     .partners-section {
-      padding: 64px 60px;
+      padding: 64px 0;
       background: var(--green-pale);
+      overflow: hidden;
     }
 
-    .partners-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .partners-section-inner {
+      padding: 0 60px;
+    }
+
+    .partner-slider-wrap {
+      position: relative;
       margin-top: 36px;
+      overflow: hidden;
     }
 
-    .partner-chip {
+    .partner-slider-wrap::before,
+    .partner-slider-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .partner-slider-wrap::before { left: 0; background: linear-gradient(to right, var(--green-pale), transparent); }
+    .partner-slider-wrap::after  { right: 0; background: linear-gradient(to left, var(--green-pale), transparent); }
+
+    .partner-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: partner-scroll 60s linear infinite;
+    }
+
+    .partner-track:hover { animation-play-state: paused; }
+
+    @keyframes partner-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .partner-logo {
+      flex-shrink: 0;
+      width: 200px;
+      height: 130px;
       background: var(--white);
       border: 1px solid var(--divider);
-      border-radius: 6px;
-      padding: 9px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--charcoal);
-      letter-spacing: 0.02em;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
 
-    .partner-chip:hover {
-      background: var(--green-bg);
-      border-color: var(--green);
-      color: var(--green-dark);
+    .partner-logo:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
+
+    .partner-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: grayscale(0.2);
+      transition: filter 0.2s;
+    }
+
+    .partner-logo:hover img { filter: grayscale(0); }
 
     /* ── CONTACT ─────────────────────────────────────────── */
     .contact-section {
@@ -1501,28 +1547,28 @@
     <h2 class="section-title">Menschen, denen Sie vertrauen können</h2>
     <div class="team-grid">
       <div class="team-card anim">
-        <img src="https://placehold.co/400x240/e0edd6/4d7a25?text=FL" alt="Franz Lebelhuber" class="team-photo">
+        <img src="images/team/franz-lebelhuber.jpg" alt="Franz Lebelhuber" class="team-photo">
         <div class="team-body">
           <div class="team-name">Franz Lebelhuber</div>
           <div class="team-role">Executive Chief</div>
         </div>
       </div>
       <div class="team-card anim anim-delay-1">
-        <img src="https://placehold.co/400x240/dce8f5/2d4a6a?text=KW" alt="Klaus Weidinger" class="team-photo">
+        <img src="images/team/klaus-weidinger.jpg" alt="Klaus Weidinger" class="team-photo">
         <div class="team-body">
           <div class="team-name">Klaus Weidinger</div>
           <div class="team-role">Executive Chief</div>
         </div>
       </div>
       <div class="team-card anim anim-delay-2">
-        <img src="https://placehold.co/400x240/f5f0e0/6a5a25?text=MB" alt="Margit Brandt" class="team-photo">
+        <img src="images/team/margit-brandt.png" alt="Margit Brandt" class="team-photo">
         <div class="team-body">
           <div class="team-name">Margit Brandt</div>
           <div class="team-role">Office</div>
         </div>
       </div>
       <div class="team-card anim anim-delay-3">
-        <img src="https://placehold.co/400x240/f0e8ed/6a2d4a?text=MS" alt="Maria Steiner" class="team-photo">
+        <img src="images/team/maria-steiner.png" alt="Maria Steiner" class="team-photo">
         <div class="team-body">
           <div class="team-name">Maria Steiner</div>
           <div class="team-role">Office</div>
@@ -1551,28 +1597,79 @@
 
   <!-- ── KOOPERATIONSPARTNER ────────────────────────────── -->
   <section class="partners-section" id="kooperationen">
-    <p class="section-label">Kooperationspartner</p>
-    <h2 class="section-title">Starke Partner –<br>für Ihre besten Konditionen</h2>
-    <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Dank unserer Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
-    <div class="partners-grid">
-      <div class="partner-chip">Oberbank</div>
-      <div class="partner-chip">ING</div>
-      <div class="partner-chip">Allianz</div>
-      <div class="partner-chip">ERGO</div>
-      <div class="partner-chip">HDI</div>
-      <div class="partner-chip">Donau Versicherung</div>
-      <div class="partner-chip">ARAG</div>
-      <div class="partner-chip">DAS</div>
-      <div class="partner-chip">Roland</div>
-      <div class="partner-chip">InterRisk</div>
-      <div class="partner-chip">Merkur</div>
-      <div class="partner-chip">Wüstenrot</div>
-      <div class="partner-chip">Generali</div>
-      <div class="partner-chip">Zürich</div>
-      <div class="partner-chip">Start Bausparkasse</div>
-      <div class="partner-chip">FWU</div>
-      <div class="partner-chip">BNP Paribas</div>
-      <div class="partner-chip">FinanzAdmin</div>
+    <div class="partners-section-inner">
+      <p class="section-label">Kooperationspartner</p>
+      <h2 class="section-title">Starke Partner –<br>für Ihre besten Konditionen</h2>
+      <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Dank unserer Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
+    </div>
+    <div class="partner-slider-wrap">
+      <div class="partner-track" id="partnerTrack">
+        <div class="partner-logo"><img src="images/partners/oberbank.png" alt="Oberbank"></div>
+        <div class="partner-logo"><img src="images/partners/ing.png" alt="ING"></div>
+        <div class="partner-logo"><img src="images/partners/allianz.jpg" alt="Allianz"></div>
+        <div class="partner-logo"><img src="images/partners/ergo.jpg" alt="ERGO"></div>
+        <div class="partner-logo"><img src="images/partners/hdi.jpg" alt="HDI"></div>
+        <div class="partner-logo"><img src="images/partners/donau.jpg" alt="Donau Versicherung"></div>
+        <div class="partner-logo"><img src="images/partners/arag.jpg" alt="ARAG"></div>
+        <div class="partner-logo"><img src="images/partners/das.jpg" alt="DAS"></div>
+        <div class="partner-logo"><img src="images/partners/roland.jpg" alt="Roland"></div>
+        <div class="partner-logo"><img src="images/partners/interrisk.jpg" alt="InterRisk"></div>
+        <div class="partner-logo"><img src="images/partners/merkur.jpg" alt="Merkur"></div>
+        <div class="partner-logo"><img src="images/partners/wuestenrot.jpg" alt="Wüstenrot"></div>
+        <div class="partner-logo"><img src="images/partners/generali.jpg" alt="Generali"></div>
+        <div class="partner-logo"><img src="images/partners/zurich.jpg" alt="Zürich"></div>
+        <div class="partner-logo"><img src="images/partners/start-bausparkasse.png" alt="Start Bausparkasse"></div>
+        <div class="partner-logo"><img src="images/partners/fwu.png" alt="FWU"></div>
+        <div class="partner-logo"><img src="images/partners/hello-bank.jpg" alt="Hello Bank"></div>
+        <div class="partner-logo"><img src="images/partners/uniqa.jpg" alt="UNIQA"></div>
+        <div class="partner-logo"><img src="images/partners/continentale.jpg" alt="Continentale"></div>
+        <div class="partner-logo"><img src="images/partners/dialog.jpg" alt="Dialog"></div>
+        <div class="partner-logo"><img src="images/partners/nv-versicherung.jpg" alt="NV Versicherung"></div>
+        <div class="partner-logo"><img src="images/partners/dieplattform.png" alt="diePlattform"></div>
+        <div class="partner-logo"><img src="images/partners/fdl.jpg" alt="FDL"></div>
+        <div class="partner-logo"><img src="images/partners/ks-ooev.jpg" alt="KS OÖEV"></div>
+        <div class="partner-logo"><img src="images/partners/europa.jpg" alt="Europa"></div>
+        <div class="partner-logo"><img src="images/partners/bac.jpg" alt="BAC"></div>
+        <div class="partner-logo"><img src="images/partners/wv-bestvorsorge.jpg" alt="WV Bestvorsorge"></div>
+        <div class="partner-logo"><img src="images/partners/vmk.jpg" alt="VMK"></div>
+        <div class="partner-logo"><img src="images/partners/wsvig.jpg" alt="WSVIG"></div>
+        <div class="partner-logo"><img src="images/partners/s-wohnfinanz.jpg" alt="S Wohnfinanz"></div>
+        <div class="partner-logo"><img src="images/partners/wiener-staedtische.jpg" alt="Wiener Städtische"></div>
+        <div class="partner-logo"><img src="images/partners/easy-leasing.png" alt="easy leasing"></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="partner-logo"><img src="images/partners/oberbank.png" alt="Oberbank"></div>
+        <div class="partner-logo"><img src="images/partners/ing.png" alt="ING"></div>
+        <div class="partner-logo"><img src="images/partners/allianz.jpg" alt="Allianz"></div>
+        <div class="partner-logo"><img src="images/partners/ergo.jpg" alt="ERGO"></div>
+        <div class="partner-logo"><img src="images/partners/hdi.jpg" alt="HDI"></div>
+        <div class="partner-logo"><img src="images/partners/donau.jpg" alt="Donau Versicherung"></div>
+        <div class="partner-logo"><img src="images/partners/arag.jpg" alt="ARAG"></div>
+        <div class="partner-logo"><img src="images/partners/das.jpg" alt="DAS"></div>
+        <div class="partner-logo"><img src="images/partners/roland.jpg" alt="Roland"></div>
+        <div class="partner-logo"><img src="images/partners/interrisk.jpg" alt="InterRisk"></div>
+        <div class="partner-logo"><img src="images/partners/merkur.jpg" alt="Merkur"></div>
+        <div class="partner-logo"><img src="images/partners/wuestenrot.jpg" alt="Wüstenrot"></div>
+        <div class="partner-logo"><img src="images/partners/generali.jpg" alt="Generali"></div>
+        <div class="partner-logo"><img src="images/partners/zurich.jpg" alt="Zürich"></div>
+        <div class="partner-logo"><img src="images/partners/start-bausparkasse.png" alt="Start Bausparkasse"></div>
+        <div class="partner-logo"><img src="images/partners/fwu.png" alt="FWU"></div>
+        <div class="partner-logo"><img src="images/partners/hello-bank.jpg" alt="Hello Bank"></div>
+        <div class="partner-logo"><img src="images/partners/uniqa.jpg" alt="UNIQA"></div>
+        <div class="partner-logo"><img src="images/partners/continentale.jpg" alt="Continentale"></div>
+        <div class="partner-logo"><img src="images/partners/dialog.jpg" alt="Dialog"></div>
+        <div class="partner-logo"><img src="images/partners/nv-versicherung.jpg" alt="NV Versicherung"></div>
+        <div class="partner-logo"><img src="images/partners/dieplattform.png" alt="diePlattform"></div>
+        <div class="partner-logo"><img src="images/partners/fdl.jpg" alt="FDL"></div>
+        <div class="partner-logo"><img src="images/partners/ks-ooev.jpg" alt="KS OÖEV"></div>
+        <div class="partner-logo"><img src="images/partners/europa.jpg" alt="Europa"></div>
+        <div class="partner-logo"><img src="images/partners/bac.jpg" alt="BAC"></div>
+        <div class="partner-logo"><img src="images/partners/wv-bestvorsorge.jpg" alt="WV Bestvorsorge"></div>
+        <div class="partner-logo"><img src="images/partners/vmk.jpg" alt="VMK"></div>
+        <div class="partner-logo"><img src="images/partners/wsvig.jpg" alt="WSVIG"></div>
+        <div class="partner-logo"><img src="images/partners/s-wohnfinanz.jpg" alt="S Wohnfinanz"></div>
+        <div class="partner-logo"><img src="images/partners/wiener-staedtische.jpg" alt="Wiener Städtische"></div>
+        <div class="partner-logo"><img src="images/partners/easy-leasing.png" alt="easy leasing"></div>
+      </div>
     </div>
   </section>
 
