@@ -1281,31 +1281,120 @@
       z-index: 1;
     }
 
+    /* ── HAMBURGER MENU ─────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .hamburger:hover { background: rgba(0,0,0,0.05); }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--divider);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      z-index: 99;
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-radius: 8px;
+      border-bottom: 1px solid var(--divider);
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { background: var(--pale-green); color: var(--green); }
+    .mobile-menu .mobile-cta {
+      margin-top: 12px;
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      border-bottom: none;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--green-dark); color: #fff; }
+
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1024px) {
       .team-grid { grid-template-columns: repeat(2,1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 900px) {
-      nav { padding: 0 20px; }
+      nav { padding: 0 20px; height: 64px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .btn-primary.nav-btn { display: none; }
+      .logo-tree { width: 38px; height: 38px; }
+      .logo-name { font-size: 20px; }
+      .logo-tagline { font-size: 8px; }
       .hero { grid-template-columns: 1fr; }
-      .hero-img img { min-height: 260px; }
-      .hero-aside { padding: 32px 24px; }
+      .hero-img { min-height: 300px; }
+      .hero-text-overlay { padding: 36px 24px 44px; }
+      .hero-aside { padding: 28px 24px; }
       .hero-aside::before { display: none; }
+      .hero-aside-label { font-size: 24px; }
+      .hero-aside-text { font-size: 14px; }
       .breadcrumb { padding: 10px 20px; }
       .intro-section, .services, .philosophy, .features-section,
       .team-section, .cta-section, .partners-section,
-      .contact-section { padding: 44px 20px; }
+      .contact-section { padding: 40px 20px; }
       .intro-section { grid-template-columns: 1fr; }
       .cards-grid, .features-grid { grid-template-columns: 1fr; }
-      .philosophy, .cta-section, .contact-section { grid-template-columns: 1fr; gap: 32px; }
+      .philosophy, .cta-section, .contact-section { grid-template-columns: 1fr; gap: 28px; }
       .features-header { grid-template-columns: 1fr; }
-      .stats-section { padding: 44px 20px; grid-template-columns: repeat(2,1fr); }
+      .stats-section { padding: 36px 20px; grid-template-columns: repeat(2,1fr); gap: 24px; }
+      .stat-num { font-size: 40px; }
       .team-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      footer { padding: 44px 20px 28px; }
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      footer { padding: 40px 20px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .cta-circle { width: 260px; height: 260px; }
+      .cta-circle-inner { width: 180px; height: 180px; }
+      .philosophy-right img { border-radius: 12px; }
+    }
+    @media (max-width: 480px) {
+      .stats-section { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .hero-main-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+      .intro-section { padding: 32px 16px; }
+      .services, .philosophy, .features-section,
+      .team-section, .cta-section, .partners-section,
+      .contact-section { padding: 32px 16px; }
+      footer { padding: 32px 16px 20px; }
     }
   </style>
 </head>
@@ -1343,8 +1432,19 @@
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
 
-    <a href="#kontakt" class="btn-primary">Beratungsgespräch</a>
+    <a href="#kontakt" class="btn-primary nav-btn">Beratungsgespräch</a>
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#top" onclick="closeMobileMenu()">Home</a>
+    <a href="#ueber-uns" onclick="closeMobileMenu()">Über uns</a>
+    <a href="#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
+    <a href="#kontakt" onclick="closeMobileMenu()">Kontakt</a>
+    <a href="#kontakt" class="mobile-cta" onclick="closeMobileMenu()">Kostenloses Erstgespräch</a>
+  </div>
 
 
   <!-- ── BREADCRUMB ────────────────────────────────────── -->
@@ -2161,6 +2261,30 @@
 
       window.addEventListener('resize', initShimmer);
     })();
+  </script>
+  <script>
+    // ── HAMBURGER MENU ──────────────────────────────────
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', function() {
+      var isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'Menü öffnen');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
   </script>
 </body>
 </html>
