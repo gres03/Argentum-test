@@ -6,1397 +6,7 @@
   <title>ARGENTUM GmbH – Unabhängige Finanzberatung Wels</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root {
-      --green:        #6a9b3a;
-      --green-dark:   #4d7a25;
-      --green-mid:    #5a8a2d;
-      --green-light:  #8ab954;
-      --green-pale:   #f2f7ec;
-      --green-bg:     #e8f2de;
-      --charcoal:     #2d3640;
-      --text:         #333333;
-      --gray:         #555555;
-      --gray-light:   #888888;
-      --gray-pale:    #f5f5f5;
-      --divider:      #e0e0e0;
-      --white:        #ffffff;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.6;
-      background: var(--white);
-    }
-
-    /* ── NAV ───────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--divider);
-      padding: 0 60px;
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-    }
-
-    /* ── LOGO ──────────────────────────────────────────── */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .logo-tree {
-      width: 54px;
-      height: 54px;
-      flex-shrink: 0;
-    }
-
-    .logo-wordmark {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      gap: 3px;
-    }
-
-    .logo-name {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--charcoal);
-      line-height: 1;
-    }
-
-    .logo-tagline {
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      line-height: 1.45;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      list-style: none;
-    }
-
-    .nav-links li {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-links li + li::before {
-      content: '|';
-      color: var(--divider);
-      font-size: 14px;
-      margin: 0 4px;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-      text-decoration: none;
-      padding: 6px 16px;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--green); }
-
-    .btn-primary {
-      background: var(--green);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 22px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-primary:hover {
-      background: var(--green-dark);
-      transform: translateY(-1px);
-    }
-
-    .btn-primary:active { transform: translateY(0); }
-
-    /* ── HERO ──────────────────────────────────────────── */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 0;
-      align-items: stretch;
-      min-height: 420px;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .hero-img {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(150deg, #f4f9ed 0%, #e8f5d8 50%, #edf7e2 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 420px;
-    }
-
-    .hero-pattern-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-pattern-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    .hero-pattern-svg.active { opacity: 1; }
-
-    .hero-text-overlay {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 48px 48px 56px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--green);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.6s ease 0.05s, transform 0.6s ease 0.05s;
-    }
-
-    .hero-eyebrow.visible { opacity: 1; transform: translateY(0); }
-
-    .hero-main-title {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(2.4rem, 3.8vw, 3.8rem);
-      font-weight: 900;
-      color: var(--green-dark);
-      line-height: 1.1;
-      letter-spacing: -0.025em;
-      margin: 0;
-    }
-
-    .hero-title-word { display: inline-block; margin: 0 3px; }
-
-    .hero-title-sep {
-      display: inline-block;
-      color: var(--green);
-      opacity: 0;
-      font-weight: 300;
-      margin: 0 4px;
-      transform: translateY(28px);
-      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
-    }
-
-    .hero-title-sep.visible { opacity: 0.45; transform: translateY(0); }
-
-    .hero-letter {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
-    }
-
-    .hero-letter.visible { opacity: 1; transform: translateY(0); }
-
-    .hero-tagline {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.7;
-      max-width: 340px;
-      margin: 0;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.7s ease 1.5s, transform 0.7s ease 1.5s;
-    }
-
-    .hero-tagline.visible { opacity: 1; transform: translateY(0); }
-
-    .hero-pattern-dots {
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 7px;
-      z-index: 3;
-    }
-
-    .hero-pattern-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green-dark);
-      opacity: 0.2;
-      transition: opacity 0.4s, transform 0.4s;
-    }
-
-    .hero-pattern-dot.active { opacity: 0.65; transform: scale(1.35); }
-
-    .hero-aside {
-      background: var(--green);
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero-aside::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: -22px;
-      width: 0;
-      height: 0;
-      border-top: 22px solid transparent;
-      border-bottom: 22px solid transparent;
-      border-right: 22px solid var(--green);
-    }
-
-    .hero-aside-pill {
-      display: inline-block;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.35);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border-radius: 20px;
-      padding: 5px 14px;
-      margin-bottom: 18px;
-    }
-
-    .hero-aside-label {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 32px;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 16px;
-      line-height: 1.25;
-      text-shadow: 0 2px 16px rgba(0,0,0,0.3);
-    }
-
-    .hero-aside-text {
-      font-size: 15.5px;
-      color: rgba(255,255,255,0.95);
-      line-height: 1.8;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.2);
-      margin-bottom: 28px;
-    }
-
-    .hero-cta-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .hero-btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #fff;
-      color: var(--green-dark);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      border-radius: 8px;
-      padding: 13px 24px;
-      text-decoration: none;
-      border: none;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .hero-btn-primary:hover { background: #f0fae8; transform: translateY(-2px); }
-    .hero-btn-primary:active { transform: translateY(0); }
-
-    .hero-btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: transparent;
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 8px;
-      padding: 11px 24px;
-      text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.55);
-      transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    }
-    .hero-btn-secondary:hover {
-      border-color: #fff;
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-1px);
-    }
-
-    /* ── BREADCRUMB ─────────────────────────────────────── */
-    .breadcrumb {
-      padding: 10px 60px;
-      font-size: 13px;
-      color: var(--gray-light);
-      border-bottom: 1px solid var(--divider);
-      background: #fafafa;
-    }
-
-    .breadcrumb a { color: var(--green); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    /* ── INTRO 3-COL ────────────────────────────────────── */
-    .intro-section {
-      padding: 56px 60px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 48px;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .intro-quote {
-      font-family: Georgia, serif;
-      font-size: 22px;
-      font-style: italic;
-      color: var(--green);
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-
-    .intro-quote .quote-attr {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      font-style: normal;
-      color: var(--green-dark);
-      display: block;
-      margin-top: 10px;
-    }
-
-    .intro-body {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.75;
-    }
-
-    .intro-col h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 12px;
-    }
-
-    .intro-col p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.75;
-    }
-
-    .intro-col .contact-link {
-      display: inline-block;
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--green);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .intro-col .contact-link:hover { color: var(--green-dark); text-decoration: underline; }
-
-    /* ── SECTION SHARED ─────────────────────────────────── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--charcoal);
-      margin-bottom: 40px;
-      line-height: 1.2;
-    }
-
-    /* ── LEISTUNGEN CARDS ───────────────────────────────── */
-    .services {
-      padding: 64px 60px;
-      background: var(--green-pale);
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--divider);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 36px rgba(0,0,0,0.10);
-    }
-
-    .card-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-body {
-      padding: 22px 24px 26px;
-    }
-
-    .card-tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--green);
-      background: var(--green-bg);
-      border-radius: 4px;
-      padding: 3px 9px;
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.65;
-    }
-
-    .card-list {
-      list-style: none;
-      margin-top: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .card-list li {
-      font-size: 14px;
-      color: var(--gray);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .card-list li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      background: var(--green);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--green);
-      text-decoration: none;
-      transition: gap 0.2s, color 0.2s;
-    }
-
-    .card-link:hover { gap: 9px; color: var(--green-dark); }
-
-    /* ── PHILOSOPHY ─────────────────────────────────────── */
-    .philosophy {
-      padding: 100px 60px 72px;
-      background: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .philosophy-left p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .quote-block {
-      background: var(--green-pale);
-      border-left: 4px solid var(--green);
-      border-radius: 0 8px 8px 0;
-      padding: 24px 28px;
-      margin-bottom: 32px;
-    }
-
-    .quote-text {
-      font-family: Georgia, serif;
-      font-size: 17px;
-      font-style: italic;
-      color: var(--green-dark);
-      line-height: 1.6;
-    }
-
-    .quote-author {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--green);
-      margin-top: 10px;
-    }
-
-    .check-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-      font-size: 15px;
-      color: var(--charcoal);
-      font-weight: 500;
-    }
-
-    .check-icon {
-      width: 20px;
-      height: 20px;
-      background: var(--green);
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .check-icon svg {
-      width: 10px; height: 10px;
-      stroke: #fff;
-      fill: none;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .philosophy-right {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .philosophy-right img {
-      width: 100%;
-      height: 440px;
-      object-fit: cover;
-      display: block;
-      border-radius: 10px;
-    }
-
-    /* ── STATS ──────────────────────────────────────────── */
-    .stats-section {
-      background: var(--charcoal);
-      padding: 60px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 36px;
-    }
-
-    .stat-item { text-align: center; }
-
-    .stat-num {
-      font-size: 42px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .stat-num span { color: var(--green-light); }
-
-    .stat-label {
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-
-    /* ── VALUES / FEATURES ──────────────────────────────── */
-    .features-section {
-      padding: 72px 60px;
-      background: var(--green-pale);
-    }
-
-    .features-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: end;
-      margin-bottom: 44px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: var(--white);
-      border: 1px solid var(--divider);
-      border-radius: 10px;
-      padding: 28px 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.07);
-    }
-
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--green-bg);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .feature-icon svg {
-      width: 22px; height: 22px;
-      stroke: var(--green);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .feature-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 8px;
-    }
-
-    .feature-desc {
-      font-size: 14px;
-      color: var(--gray);
-      line-height: 1.65;
-    }
-
-    /* ── TEAM ───────────────────────────────────────────── */
-    .team-section {
-      padding: 72px 60px;
-      background: var(--white);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 240px));
-      justify-content: center;
-      gap: 22px;
-      margin-top: 44px;
-    }
-
-    .team-card {
-      background: var(--white);
-      border: 1px solid var(--divider);
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .team-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-    }
-
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      height: auto;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      image-rendering: -webkit-optimize-contrast;
-      filter: contrast(1.15) saturate(1.08);
-    }
-
-    .team-body {
-      padding: 18px 20px 20px;
-    }
-
-    .team-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 3px;
-    }
-
-    .team-role {
-      font-size: 12px;
-      color: var(--green);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    /* ── CTA ─────────────────────────────────────────────── */
-    .cta-section {
-      background: var(--green);
-      padding: 88px 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-      min-height: 440px;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 480px; height: 480px;
-      background: rgba(255,255,255,0.07);
-      border-radius: 50%;
-    }
-
-    .cta-left { position: relative; z-index: 2; }
-
-    .cta-left h2 {
-      font-size: 38px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 18px;
-    }
-
-    .cta-left p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-
-    .btn-white {
-      background: #fff;
-      color: var(--green-dark);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 6px;
-      padding: 12px 28px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-white:hover {
-      background: rgba(255,255,255,0.9);
-      transform: translateY(-1px);
-    }
-
-    .cta-right {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cta-circle {
-      width: 340px;
-      height: 340px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .cta-circle-inner {
-      width: 230px;
-      height: 230px;
-      background: rgba(255,255,255,0.18);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 24px;
-    }
-
-    .cta-circle-inner svg {
-      width: 36px; height: 36px;
-      stroke: #fff; fill: none;
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      margin-bottom: 10px;
-    }
-
-    .cta-circle-inner .cta-text {
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.4;
-    }
-
-    /* ── PARTNERS ────────────────────────────────────────── */
-    .partners-section {
-      padding: 64px 0;
-      background: var(--green-pale);
-      overflow: hidden;
-    }
-
-    .partners-section-inner {
-      padding: 0 60px;
-    }
-
-    .partner-slider-wrap {
-      position: relative;
-      margin-top: 36px;
-      overflow: hidden;
-    }
-
-    .partner-slider-wrap::before,
-    .partner-slider-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .partner-slider-wrap::before { left: 0; background: linear-gradient(to right, var(--green-pale), transparent); }
-    .partner-slider-wrap::after  { right: 0; background: linear-gradient(to left, var(--green-pale), transparent); }
-
-    .partner-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: partner-scroll 60s linear infinite;
-    }
-
-    .partner-track:hover { animation-play-state: paused; }
-
-    @keyframes partner-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .partner-logo {
-      flex-shrink: 0;
-      width: 200px;
-      height: 130px;
-      background: var(--white);
-      border: 1px solid var(--divider);
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 10px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .partner-logo:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
-    }
-
-    .partner-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: grayscale(0.2);
-      transition: filter 0.2s;
-    }
-
-    .partner-logo:hover img { filter: grayscale(0); }
-
-    /* ── CONTACT ─────────────────────────────────────────── */
-    .contact-section {
-      padding: 72px 60px;
-      background: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .contact-info .section-title { margin-bottom: 16px; }
-
-    .contact-info > p {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .contact-detail-icon {
-      width: 38px; height: 38px;
-      background: var(--green-bg);
-      border-radius: 8px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .contact-detail-icon svg {
-      width: 18px; height: 18px;
-      stroke: var(--green);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .detail-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gray-light);
-      margin-bottom: 2px;
-    }
-
-    .detail-val {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-
-    .detail-val a { color: var(--charcoal); text-decoration: none; }
-    .detail-val a:hover { color: var(--green); }
-
-    .contact-form {
-      background: var(--green-pale);
-      border: 1px solid #d0e8bb;
-      border-radius: 12px;
-      padding: 36px 32px;
-    }
-
-    .contact-form h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 26px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-group { margin-bottom: 14px; }
-
-    .form-group label {
-      display: block;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--charcoal);
-      margin-bottom: 6px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--charcoal);
-      background: var(--white);
-      border: 1px solid var(--divider);
-      border-radius: 7px;
-      padding: 10px 14px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(106,155,58,0.15);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit { width: 100%; margin-top: 6px; padding: 13px; font-size: 15px; border-radius: 7px; }
-
-    /* ── FOOTER ─────────────────────────────────────────── */
-    footer {
-      background: var(--charcoal);
-      padding: 56px 60px 36px;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 44px;
-      margin-bottom: 48px;
-    }
-
-    .footer-logo-wrap { margin-bottom: 16px; }
-
-    .footer-logo-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #fff;
-    }
-
-    .footer-logo-tag {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green-light);
-    }
-
-    .footer-brand p {
-      font-size: 13px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 20px;
-      max-width: 240px;
-    }
-
-    .footer-col h4 {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--green-light);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .footer-col ul a {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
-
-    .impressum-section {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 28px;
-      margin-bottom: 24px;
-    }
-
-    .impressum-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--green-light);
-      margin-bottom: 12px;
-    }
-
-    .impressum-text {
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.32);
-      line-height: 1.85;
-      max-width: 960px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-bottom p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-bottom-links a {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-bottom-links a:hover { color: rgba(255,255,255,0.6); }
-
-    /* ── HERO BACKGROUND PATHS ──────────────────────────── */
-    .hero-aside { position: relative; overflow: hidden; }
-    #hero-paths-aside {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    #hero-paths-aside svg {
-      width: 100%; height: 100%; display: block;
-    }
-    .hero-aside-pill,
-    .hero-aside-label,
-    .hero-aside-text,
-    .hero-cta-wrap,
-    .hero-aside a { position: relative; z-index: 2; }
-
-    @keyframes hpFade {
-      0%, 100% { opacity: var(--lo); }
-      50%       { opacity: var(--hi); }
-    }
-    @keyframes hpDrift {
-      0%   { transform: translate(0px, 0px); }
-      33%  { transform: translate(-12px, 8px); }
-      66%  { transform: translate(8px, -10px); }
-      100% { transform: translate(0px, 0px); }
-    }
-
-    /* ── ANIMATIONS ─────────────────────────────────────── */
-    /* Transition-based — final state locks in, never reverts on hover/click */
-    .anim {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.55s cubic-bezier(0.22,1,0.36,1);
-    }
-    .anim.visible { opacity: 1; transform: translateY(0); }
-
-    .anim-delay-1 { transition-delay: 0.08s; }
-    .anim-delay-2 { transition-delay: 0.16s; }
-    .anim-delay-3 { transition-delay: 0.24s; }
-    .anim-delay-4 { transition-delay: 0.32s; }
-    .anim-delay-5 { transition-delay: 0.40s; }
-
-    /* ── SHIMMER BUTTON ─────────────────────────────────── */
-    .shimmer-btn { position: relative; }
-    .shimmer-svg {
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      pointer-events: none;
-      overflow: visible;
-      z-index: 1;
-    }
-
-    /* ── HAMBURGER MENU ─────────────────────────────────── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    .hamburger:hover { background: rgba(0,0,0,0.05); }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--charcoal);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: var(--white);
-      border-bottom: 1px solid var(--divider);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      z-index: 99;
-      padding: 16px 24px 24px;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      display: block;
-      padding: 14px 12px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--charcoal);
-      text-decoration: none;
-      border-radius: 8px;
-      border-bottom: 1px solid var(--divider);
-      transition: background 0.15s, color 0.15s;
-    }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { background: var(--pale-green); color: var(--green); }
-    .mobile-menu .mobile-cta {
-      margin-top: 12px;
-      background: var(--green);
-      color: #fff;
-      text-align: center;
-      border-radius: 8px;
-      border-bottom: none;
-    }
-    .mobile-menu .mobile-cta:hover { background: var(--green-dark); color: #fff; }
-
-    /* ── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .team-grid { grid-template-columns: repeat(2,1fr); }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 900px) {
-      nav { padding: 0 20px; height: 64px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .btn-primary.nav-btn { display: none; }
-      .logo-tree { width: 38px; height: 38px; }
-      .logo-name { font-size: 20px; }
-      .logo-tagline { font-size: 8px; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-img { min-height: 300px; }
-      .hero-text-overlay { padding: 36px 24px 44px; }
-      .hero-aside { padding: 28px 24px; }
-      .hero-aside::before { display: none; }
-      .hero-aside-label { font-size: 24px; }
-      .hero-aside-text { font-size: 14px; }
-      .breadcrumb { padding: 10px 20px; }
-      .intro-section, .services, .philosophy, .features-section,
-      .team-section, .cta-section, .partners-section,
-      .contact-section { padding: 40px 20px; }
-      .intro-section { grid-template-columns: 1fr; }
-      .cards-grid, .features-grid { grid-template-columns: 1fr; }
-      .philosophy, .cta-section, .contact-section { grid-template-columns: 1fr; gap: 28px; }
-      .features-header { grid-template-columns: 1fr; }
-      .stats-section { padding: 36px 20px; grid-template-columns: repeat(2,1fr); gap: 24px; }
-      .stat-num { font-size: 40px; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 40px 20px 24px; }
-      .footer-top { grid-template-columns: 1fr; gap: 24px; }
-      .cta-circle { width: 260px; height: 260px; }
-      .cta-circle-inner { width: 180px; height: 180px; }
-      .philosophy-right img { border-radius: 12px; }
-    }
-    @media (max-width: 480px) {
-      .stats-section { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .team-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
-      .hero-main-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
-      .intro-section { padding: 32px 16px; }
-      .services, .philosophy, .features-section,
-      .team-section, .cta-section, .partners-section,
-      .contact-section { padding: 32px 16px; }
-      footer { padding: 32px 16px 20px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
@@ -1428,6 +38,13 @@
       <li><a href="#top">Home</a></li>
       <li><a href="#ueber-uns">Über uns</a></li>
       <li><a href="#leistungen">Finanzberatung</a></li>
+      <li class="has-sub">
+        <a href="#versicherungscheck">Versicherungs-Check</a>
+        <ul class="nav-sub">
+          <li><a href="#versicherungscheck">Alle Versicherungs-Checks</a></li>
+          <li><a href="schadenmeldung.html">Schaden melden</a></li>
+        </ul>
+      </li>
       <li><a href="#kooperationen">Kooperationen</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -1441,15 +58,11 @@
     <a href="#top" onclick="closeMobileMenu()">Home</a>
     <a href="#ueber-uns" onclick="closeMobileMenu()">Über uns</a>
     <a href="#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="#versicherungscheck" onclick="closeMobileMenu()">Versicherungs-Check</a>
+    <a href="schadenmeldung.html" class="mobile-sub" onclick="closeMobileMenu()">↳ Schaden melden</a>
     <a href="#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
     <a href="#kontakt" onclick="closeMobileMenu()">Kontakt</a>
     <a href="#kontakt" class="mobile-cta" onclick="closeMobileMenu()">Kostenloses Erstgespräch</a>
-  </div>
-
-
-  <!-- ── BREADCRUMB ────────────────────────────────────── -->
-  <div class="breadcrumb">
-    Sie befinden sich hier: <a href="#top">Home</a>
   </div>
 
   <!-- ── HERO ──────────────────────────────────────────── -->
@@ -1552,6 +165,171 @@
           <a href="#kontakt" class="card-link">Mehr erfahren →</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── VERSICHERUNGS-CHECK ───────────────────────────── -->
+  <!--
+    PLATZHALTER-LINKS: Jede Karte verlinkt aktuell auf "#".
+    Hier kommen später die Partner-/Vergleichslinks mit ARGENTUM-Provision rein.
+    Ziel-URL pro Karte im href="#" ersetzen; das Attribut data-partner-link
+    kennzeichnet die jeweilige Sparte zur Zuordnung.
+  -->
+  <section class="inscheck-section" id="versicherungscheck">
+    <div class="inscheck-inner">
+      <p class="section-label">Versicherungs-Check</p>
+      <h2 class="section-title">Ihr persönlicher Versicherungs-Check</h2>
+      <p class="inscheck-lead">Wir betreuen alle Versicherungssparten und vergleichen für Sie die Angebote von über 50 Gesellschaften – damit Sie optimal abgesichert sind, ohne zu viel zu bezahlen. Wählen Sie einen Bereich und starten Sie unverbindlich Ihre Anfrage.</p>
+
+      <!-- Gruppe 1 -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          Person &amp; Vorsorge
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Krankenversicherung</h4>
+            <p class="inscheck-card-desc">Private Zusatzdeckung für freie Arzt- und Spitalswahl, Sonderklasse und schnellere Behandlung.</p>
+            <a href="krankenversicherung.html" class="inscheck-card-link" data-partner-link="krankenversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Unfallversicherung</h4>
+            <p class="inscheck-card-desc">Finanzielle Absicherung bei bleibenden Folgen eines Unfalls – rund um die Uhr, weltweit.</p>
+            <a href="unfallversicherung.html" class="inscheck-card-link" data-partner-link="unfallversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Altersvorsorge</h4>
+            <p class="inscheck-card-desc">Privater Vermögensaufbau für eine sorgenfreie Pension – flexibel und steuerlich begünstigt.</p>
+            <a href="altersvorsorge.html" class="inscheck-card-link" data-partner-link="altersvorsorge">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M23 12a11.05 11.05 0 0 0-22 0z"/><path d="M18 19a3 3 0 0 1-6 0v-7"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Risikolebensversicherung</h4>
+            <p class="inscheck-card-desc">Schützt Ihre Familie oder Kreditpartner im Todesfall mit einer vereinbarten Versicherungssumme.</p>
+            <a href="risikolebensversicherung.html" class="inscheck-card-link" data-partner-link="risikolebensversicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe 2 -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          Wohnen
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Haushaltsversicherung</h4>
+            <p class="inscheck-card-desc">Deckt Ihr Hab und Gut bei Feuer, Wasser, Sturm und Einbruch – inklusive Privathaftpflicht.</p>
+            <a href="haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="haushaltsversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Eigenheim- &amp; Haushaltsversicherung</h4>
+            <p class="inscheck-card-desc">Kombinierter Schutz für Gebäude und Wohnungsinhalt – ideal für Haus- und Wohnungseigentümer.</p>
+            <a href="eigenheim-haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="eigenheim-haushaltsversicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe 3 -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><path d="M4 17v2M20 17v2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+          </span>
+          Fahrzeug &amp; Mobilität
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">KFZ-Haftpflicht</h4>
+            <p class="inscheck-card-desc">Gesetzlich verpflichtende Deckung für Schäden, die Sie mit Ihrem Fahrzeug anderen zufügen.</p>
+            <a href="kfz-haftpflicht.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">KFZ-Haftpflicht &amp; Kasko</h4>
+            <p class="inscheck-card-desc">Haftpflicht plus Teil- oder Vollkasko – Schutz auch für Schäden am eigenen Fahrzeug.</p>
+            <a href="kfz-haftpflicht-mit-kasko.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht-kasko">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10l-1-3H7"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Moped-Versicherung</h4>
+            <p class="inscheck-card-desc">Haftpflicht für Mopeds und Motorfahrräder – auf Wunsch mit Diebstahl- und Kaskoschutz.</p>
+            <a href="mopedversicherung.html" class="inscheck-card-link" data-partner-link="moped-versicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="8" width="13" height="8" rx="1"/><path d="M15 12h4l2 2v2h-6"/><circle cx="8" cy="18" r="2"/><path d="M2 12h2"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Anhänger-Versicherung</h4>
+            <p class="inscheck-card-desc">Deckung für PKW- und Wohnanhänger – Haftpflicht sowie optionaler Kaskoschutz.</p>
+            <a href="anhaengerversicherung.html" class="inscheck-card-link" data-partner-link="anhaenger-versicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe 4 – Reise (direkter Link zum Partner, kein Formular) -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          Reise
+        </h3>
+        <div class="inscheck-grid inscheck-grid--single">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Reiseversicherung</h4>
+            <p class="inscheck-card-desc">Reise-Storno, Reisekranken- und Reisegepäckschutz – direkt online bei unserem Partner Europäische Reiseversicherung berechnen und abschließen.</p>
+            <a href="https://www.europaeische.at/?languageCode=DE&amp;systemChannelCode=SLK&amp;systemEntryPoint=start&amp;agencyNumber=503324" class="inscheck-card-link" target="_blank" rel="noopener" data-partner-link="reiseversicherung">Direkt zum Online-Rechner ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="inscheck-claim anim">
+        <div class="inscheck-claim-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="inscheck-claim-body">
+          <p class="inscheck-claim-tag">Bereits versichert?</p>
+          <h3>Schadenfall eingetreten – jetzt Schaden melden</h3>
+          <p>Melden Sie Ihren Schaden online. Wir leiten die Meldung an Ihre Versicherung weiter und begleiten die gesamte Abwicklung.</p>
+        </div>
+        <a href="schadenmeldung.html" class="btn-primary">Schaden melden →</a>
+      </div>
+
+      <p class="inscheck-note">Alle Anfragen sind unverbindlich und kostenlos. ARGENTUM berät Sie unabhängig und vergleicht die Angebote führender Versicherungsgesellschaften.</p>
     </div>
   </section>
 
@@ -1711,7 +489,7 @@
     <div class="partners-section-inner">
       <p class="section-label">Kooperationspartner</p>
       <h2 class="section-title">Starke Partner –<br>für Ihre besten Konditionen</h2>
-      <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Dank unserer Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
+      <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Wir sind mit über 30 der besten Versicherungen und Finanzpartner Österreichs verpartnert. Dank dieser Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
     </div>
     <div class="partner-slider-wrap">
       <div class="partner-track" id="partnerTrack">
@@ -1790,6 +568,7 @@
       <p class="section-label">Kontakt</p>
       <h2 class="section-title">Sprechen wir über Ihre Ziele.</h2>
       <p>Wir sind persönlich für Sie da – telefonisch, per E-Mail oder vor Ort in unserem Büro in Wels.</p>
+      <p style="margin-top:10px;font-size:14px;">Bereits Kunde und ein Schadenfall eingetreten? <a href="schadenmeldung.html" class="contact-link" style="margin-top:0;">Schaden online melden →</a></p>
 
       <div class="contact-detail">
         <div class="contact-detail-icon">
@@ -1834,39 +613,56 @@
 
     <div class="contact-form anim anim-delay-2">
       <h3>Kostenloses Erstgespräch anfragen</h3>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Vorname *</label>
-          <input type="text" placeholder="Max">
+      <!-- Versand zentral in assets/anfrage.js (FORM_CONFIG) – solange kein
+           Endpoint gesetzt ist, Demo-Modus (es wird nichts verschickt). -->
+      <form id="contact-form" class="js-form" novalidate>
+        <input type="hidden" name="_betreff" value="Erstgespräch-Anfrage (Website)">
+        <input type="hidden" name="_typ" value="kontakt">
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <label>Bitte leer lassen <input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="c-vorname">Vorname *</label>
+            <input type="text" id="c-vorname" name="vorname" required placeholder="Max">
+          </div>
+          <div class="form-group">
+            <label for="c-nachname">Nachname *</label>
+            <input type="text" id="c-nachname" name="nachname" required placeholder="Mustermann">
+          </div>
         </div>
         <div class="form-group">
-          <label>Nachname *</label>
-          <input type="text" placeholder="Mustermann">
+          <label for="c-email">E-Mail-Adresse *</label>
+          <input type="email" id="c-email" name="email" required placeholder="max@beispiel.at">
         </div>
+        <div class="form-group">
+          <label for="c-telefon">Telefonnummer</label>
+          <input type="tel" id="c-telefon" name="telefon" placeholder="+43 …">
+        </div>
+        <div class="form-group">
+          <label for="c-thema">Thema / Interesse</label>
+          <select id="c-thema" name="thema">
+            <option value="">Bitte wählen …</option>
+            <option>Absichern – Versicherungsberatung</option>
+            <option>Finanzieren – Finanzierungsberatung</option>
+            <option>Veranlagen – Vermögensaufbau</option>
+            <option>Allgemeine Beratung</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="c-nachricht">Ihre Nachricht</label>
+          <textarea id="c-nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen …"></textarea>
+        </div>
+        <label class="ff-consent">
+          <input type="checkbox" name="datenschutz" value="1" required>
+          <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und willige in die Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage ein. *</span>
+        </label>
+        <button type="submit" class="btn-primary form-submit">Anfrage absenden</button>
+      </form>
+      <div class="contact-success js-form-success">
+        <h3>Vielen Dank für Ihre Anfrage!</h3>
+        <p>Wir melden uns in der Regel innerhalb von ein bis zwei Werktagen bei Ihnen. Bei dringenden Fragen erreichen Sie uns unter <a href="tel:+437242219990">+43 7242 219990</a>.</p>
       </div>
-      <div class="form-group">
-        <label>E-Mail-Adresse *</label>
-        <input type="email" placeholder="max@beispiel.at">
-      </div>
-      <div class="form-group">
-        <label>Telefonnummer</label>
-        <input type="tel" placeholder="+43 …">
-      </div>
-      <div class="form-group">
-        <label>Thema / Interesse</label>
-        <select>
-          <option value="">Bitte wählen …</option>
-          <option>Absichern – Versicherungsberatung</option>
-          <option>Finanzieren – Finanzierungsberatung</option>
-          <option>Veranlagen – Vermögensaufbau</option>
-          <option>Allgemeine Beratung</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Ihre Nachricht</label>
-        <textarea placeholder="Beschreiben Sie kurz Ihr Anliegen …"></textarea>
-      </div>
-      <button class="btn-primary form-submit">Anfrage absenden</button>
     </div>
   </section>
 
@@ -1909,8 +705,10 @@
           <li><a href="#ueber-uns">Über uns</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#kooperationen">Kooperationen</a></li>
+          <li><a href="#versicherungscheck">Versicherungs-Check</a></li>
+          <li><a href="schadenmeldung.html">Schaden melden</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
-          <li><a href="#impressum">Impressum</a></li>
+          <li><a href="impressum.html">Impressum</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1927,24 +725,20 @@
     <div class="impressum-section" id="impressum">
       <div class="impressum-title">Impressum &amp; Pflichtangaben</div>
       <p class="impressum-text">
-        <strong style="color:rgba(255,255,255,0.5)">ARGENTUM GmbH</strong> · Maria-Theresia-Str. 41 · 4600 Wels · Österreich ·
-        Tel.: +43 7242 219990 · E-Mail: office@argentum.co.at · Web: www.argentum.co.at ·
-        Firmenbuchnummer: FN 440241p · Firmenbuchgericht: Landesgericht Wels ·
-        Geschäftsführer: Franz Lebelhuber, Klaus Weidinger ·
-        Branche: Finanz- und Vermögensberatung, Versicherungsmakler ·
-        GISA-Zahlen: 28144618 (Versicherungsvermittlung) und 28132387 (Gewerbliche Vermögensberatung) ·
-        Konzessionierter WAG-2018-Partner: FinanzAdmin Wertpapierdienstleistungen GmbH ·
-        Zuständige Behörde: Bezirkshauptmannschaft Wels-Land · Aufsichtsbehörde: FMA (Finanzmarktaufsicht) ·
-        Mitglied der Wirtschaftskammer Österreich (WKO)
+        <strong style="color:rgba(255,255,255,0.5)">ARGENTUM GmbH</strong> · Gesellschaft mit beschränkter Haftung ·
+        Geschäftsführender Gesellschafter: Franz Lebelhuber · Gesellschafter: Klaus Weidinger ·
+        Maria-Theresia-Str. 41 · 4600 Wels · Tel.: +43 7242 219990 · E-Mail: office@argentum.co.at ·
+        Firmensitz: Wels · FN 440241p · Landesgericht Wels · GISA-Zahlen: 28144618, 28132387 ·
+        <a href="impressum.html" style="color:var(--green-light);">Vollständiges Impressum →</a>
       </p>
     </div>
 
     <div class="footer-bottom">
       <p>© 2026 ARGENTUM GmbH. Alle Rechte vorbehalten.</p>
       <div class="footer-bottom-links">
-        <a href="#impressum">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="esg.html">ESG-Erklärung</a>
       </div>
     </div>
   </footer>
@@ -2262,29 +1056,7 @@
       window.addEventListener('resize', initShimmer);
     })();
   </script>
-  <script>
-    // ── HAMBURGER MENU ──────────────────────────────────
-    var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
-    });
-
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-label', 'Menü öffnen');
-    }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMobileMenu();
-      }
-    });
-  </script>
+  <!-- Navigation (Hamburger) + Formularversand: gemeinsames Skript -->
+  <script src="assets/anfrage.js"></script>
 </body>
 </html>

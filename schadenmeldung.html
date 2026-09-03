@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schaden melden &ndash; Schaden- &amp; Unfallmeldung | ARGENTUM GmbH</title>
+  <meta name="description" content="Schaden- &amp; Unfallmeldung bei ARGENTUM GmbH. Melden Sie Ihren Schadenfall online &ndash; wir leiten die Meldung an Ihre Versicherung weiter und begleiten die Abwicklung.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/form.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────────────── -->
+  <nav id="top">
+    <a href="index.html#top" class="nav-logo">
+      <svg class="logo-tree" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="27" cy="14" rx="11" ry="9" fill="#6a9b3a"/>
+        <ellipse cx="20" cy="20" rx="9" ry="8" fill="#5a8a2d"/>
+        <ellipse cx="34" cy="20" rx="9" ry="8" fill="#5a8a2d"/>
+        <ellipse cx="27" cy="24" rx="12" ry="9" fill="#6a9b3a"/>
+        <ellipse cx="19" cy="28" rx="8" ry="7" fill="#4d7a25"/>
+        <ellipse cx="35" cy="28" rx="8" ry="7" fill="#4d7a25"/>
+        <ellipse cx="27" cy="30" rx="10" ry="8" fill="#6a9b3a"/>
+        <rect x="24" y="36" width="6" height="12" rx="2" fill="#4d7a25"/>
+        <ellipse cx="27" cy="48" rx="7" ry="2" fill="#4d7a25" opacity="0.4"/>
+      </svg>
+      <div class="logo-wordmark">
+        <span class="logo-name">ARGENTUM</span>
+        <span class="logo-tagline">Absichern&reg; &middot; Finanzieren &middot; Veranlagen</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#top">Home</a></li>
+      <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
+      <li><a href="index.html#leistungen">Finanzberatung</a></li>
+      <li class="has-sub">
+        <a href="index.html#versicherungscheck">Versicherungs-Check</a>
+        <ul class="nav-sub">
+          <li><a href="index.html#versicherungscheck">Alle Versicherungs-Checks</a></li>
+          <li><a href="schadenmeldung.html">Schaden melden</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#kooperationen">Kooperationen</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+    </ul>
+
+    <a href="index.html#kontakt" class="btn-primary nav-btn">Beratungsgespr&auml;ch</a>
+    <button class="hamburger" id="hamburger" aria-label="Men&uuml; &ouml;ffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#top" onclick="closeMobileMenu()">Home</a>
+    <a href="index.html#ueber-uns" onclick="closeMobileMenu()">&Uuml;ber uns</a>
+    <a href="index.html#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="index.html#versicherungscheck" onclick="closeMobileMenu()">Versicherungs-Check</a>
+    <a href="schadenmeldung.html" class="mobile-sub" onclick="closeMobileMenu()">&#8627; Schaden melden</a>
+    <a href="index.html#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
+    <a href="index.html#kontakt" onclick="closeMobileMenu()">Kontakt</a>
+    <a href="index.html#kontakt" class="mobile-cta" onclick="closeMobileMenu()">Kostenloses Erstgespr&auml;ch</a>
+  </div>
+
+
+  <!-- ── SCHADENMELDUNG ────────────────────────────────── -->
+  <div class="anfrage-wrap">
+    <div class="anfrage-grid">
+
+      <div class="anfrage-main">
+        <p class="section-label">Service f&uuml;r Kunden</p>
+        <h1 class="anfrage-title">Schaden- &amp; Unfallmeldung</h1>
+        <p class="anfrage-intro">Als bestehende Kundin oder bestehender Kunde von ARGENTUM melden Sie Ihren Schadenfall hier direkt online. Wir leiten die Meldung umgehend an Ihre Versicherungsgesellschaft weiter und begleiten Sie durch die gesamte Abwicklung.</p>
+        <p class="anfrage-intro">Bitte f&uuml;llen Sie die Schadensmeldung so genau und detailliert wie m&ouml;glich aus, damit wir eine schnelle Bearbeitung gew&auml;hrleisten k&ouml;nnen.</p>
+        <p class="ff-required-note">Mit <span class="ff-req">*</span> markierte Felder sind Pflichtfelder.</p>
+
+        <!--
+          FORMULAR-VERSAND: zentral in assets/anfrage.js (FORM_CONFIG).
+          Solange dort kein "endpoint" gesetzt ist, laeuft alles im
+          Demo-Modus (es wird nichts verschickt, nur die Bestaetigung
+          erscheint). Fotos/Dokumente werden nach Eingang der Meldung
+          per E-Mail nachgereicht (kein Upload im Formular).
+        -->
+        <form id="anfrage-form" class="ff-form js-form" novalidate>
+          <input type="hidden" name="_betreff" value="Schaden- & Unfallmeldung (Website)">
+          <input type="hidden" name="_typ" value="schadenmeldung">
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label>Bitte leer lassen <input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <fieldset class="ff-section">
+            <legend>Ihre Kontaktdaten</legend>
+            <div class="ff-grid">
+              <div class="ff-field">
+                <label for="name">Name <span class="ff-req">*</span></label>
+                <input type="text" id="name" name="name" required maxlength="200" autocomplete="name">
+              </div>
+              <div class="ff-field">
+                <label for="email">E-Mail-Adresse <span class="ff-req">*</span></label>
+                <input type="email" id="email" name="email" required maxlength="254" placeholder="name@beispiel.at" autocomplete="email">
+              </div>
+              <div class="ff-field">
+                <label for="polizze">Polizzennummer <span class="ff-hint">falls zur Hand</span></label>
+                <input type="text" id="polizze" name="polizze" maxlength="200">
+              </div>
+              <div class="ff-field">
+                <label for="telefon">Telefonnummer <span class="ff-hint">optional</span></label>
+                <input type="tel" id="telefon" name="telefon" maxlength="30" placeholder="+43 ...">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ff-section">
+            <legend>Angaben zum Schaden</legend>
+            <div class="ff-grid">
+              <div class="ff-field ff-col-full">
+                <label>Schadensfall <span class="ff-req">*</span></label>
+                <div class="ff-radio-group" role="radiogroup" aria-label="Schadensfall">
+                  <label class="ff-radio"><input type="radio" name="schadensfall" value="KFZ/Kasko-Schaden" required> KFZ- / Kasko-Schaden</label>
+                  <label class="ff-radio"><input type="radio" name="schadensfall" value="Haftpflicht-Schaden"> Haftpflicht-Schaden</label>
+                  <label class="ff-radio"><input type="radio" name="schadensfall" value="Rechtsschutz-Schaden"> Rechtsschutz-Schaden</label>
+                  <label class="ff-radio"><input type="radio" name="schadensfall" value="Eigenheim/Haushalt-Schaden"> Eigenheim- / Haushalt-Schaden</label>
+                  <label class="ff-radio"><input type="radio" name="schadensfall" value="Unfallmeldung"> Unfallmeldung</label>
+                </div>
+              </div>
+              <div class="ff-field">
+                <label for="schaden-datum">Schaden- / Unfalldatum <span class="ff-req">*</span></label>
+                <input type="date" id="schaden-datum" name="schaden-datum" required>
+              </div>
+              <div class="ff-field">
+                <label for="schaden-zeit">Schaden- / Unfallzeit <span class="ff-req">*</span></label>
+                <input type="time" id="schaden-zeit" name="schaden-zeit" required>
+              </div>
+              <div class="ff-field ff-col-full">
+                <label for="schaden-ort">Schaden- / Unfallort <span class="ff-req">*</span></label>
+                <input type="text" id="schaden-ort" name="schaden-ort" required maxlength="300" placeholder="Straße, PLZ, Ort">
+              </div>
+              <div class="ff-field ff-col-full">
+                <label for="hergang">Schaden- / Unfallhergang <span class="ff-req">*</span></label>
+                <textarea id="hergang" name="hergang" required maxlength="2000" placeholder="Was ist passiert? Bitte den Ablauf so genau wie möglich schildern."></textarea>
+              </div>
+              <div class="ff-field ff-col-full ff-conditional" data-when="schadensfall" data-equals="KFZ/Kasko-Schaden|Haftpflicht-Schaden|Rechtsschutz-Schaden">
+                <label for="gegner">Beteiligte / Unfallgegner <span class="ff-req">*</span></label>
+                <textarea id="gegner" name="gegner" data-required-when-visible maxlength="1500" placeholder="Name, Adresse, Telefonnummer, Kennzeichen und Haftpflichtversicherer des Unfallgegners sowie verletzte Personen."></textarea>
+              </div>
+              <div class="ff-field ff-conditional" data-when="schadensfall" data-equals="KFZ/Kasko-Schaden|Haftpflicht-Schaden|Unfallmeldung">
+                <label for="kennzeichen">KFZ-Kennzeichen <span class="ff-req">*</span></label>
+                <input type="text" id="kennzeichen" name="kennzeichen" data-required-when-visible maxlength="20">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ff-section">
+            <legend>Schadenausma&szlig; &amp; Unterlagen</legend>
+            <div class="ff-grid">
+              <div class="ff-field ff-col-full">
+                <label for="schadenausmass">Entstandener Schaden / Verletzungen / Diagnose <span class="ff-req">*</span></label>
+                <textarea id="schadenausmass" name="schadenausmass" required maxlength="2000" placeholder="Beschädigte Gegenstände, geschätzte Schadenhöhe, Verletzungen bzw. ärztliche Diagnose."></textarea>
+              </div>
+              <div class="ff-field ff-col-full">
+                <label for="nachricht">Ihre Nachricht <span class="ff-hint">optional</span></label>
+                <textarea id="nachricht" name="nachricht" maxlength="2000"></textarea>
+              </div>
+              <div class="ff-field ff-col-full">
+                <p class="ff-file-hint" style="margin-top:0;">Fotos vom Schaden, Polizeiprotokoll, Rechnungen und weitere Unterlagen reichen wir nach Eingang Ihrer Meldung gemeinsam mit Ihnen per E-Mail nach.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ff-section">
+            <legend>Einwilligung &amp; Absenden</legend>
+            <div class="ff-field ff-col-full">
+              <label class="ff-consent">
+                <input type="checkbox" id="datenschutz" name="datenschutz" value="1" required>
+                <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a> gelesen und willige in die Verarbeitung meiner Daten zur Bearbeitung dieser Schadensmeldung ein. <span class="ff-req">*</span></span>
+              </label>
+            </div>
+            <div class="ff-field ff-col-full">
+              <button type="submit" class="btn-primary ff-submit">Meldung absenden</button>
+              <p class="ff-note">Ihre Meldung wird vertraulich behandelt und ausschlie&szlig;lich zur Schadenabwicklung mit Ihrer Versicherungsgesellschaft verwendet.</p>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="ff-success js-form-success" id="anfrage-success">
+          <h3>Ihre Schadensmeldung ist eingegangen!</h3>
+          <p>Wir pr&uuml;fen die Angaben und nehmen umgehend Kontakt mit Ihnen und Ihrer Versicherungsgesellschaft auf. In dringenden F&auml;llen erreichen Sie uns unter <a href="tel:+437242219990">+43 7242 219990</a>.</p>
+        </div>
+      </div>
+
+      <aside class="anfrage-aside">
+        <div class="aside-card aside-card--accent">
+          <h4>Soforthilfe im Schadenfall</h4>
+          <ul class="aside-list">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Bei Personenschaden zuerst Rettung &amp; Polizei verst&auml;ndigen (Notruf 112 / 133 / 144)</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Unfallstelle absichern und Beweise sichern (Fotos, Zeugen)</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Bei KFZ-Schaden: Europ&auml;ischen Unfallbericht gemeinsam ausf&uuml;llen</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Schaden nicht anerkennen &ndash; erst mit uns Kontakt aufnehmen</li>
+          </ul>
+        </div>
+        <div class="aside-card aside-contact">
+          <h4>Pers&ouml;nlicher Kontakt</h4>
+          <p>
+            Lieber telefonisch melden?<br>
+            <a href="tel:+437242219990">+43 7242 219990</a><br>
+            <a href="mailto:office@argentum.co.at">office@argentum.co.at</a><br>
+            Mo&ndash;Fr, 08:00&ndash;17:00 Uhr
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <svg width="40" height="40" viewBox="0 0 54 54" fill="none">
+            <ellipse cx="27" cy="14" rx="11" ry="9" fill="#8ab954"/>
+            <ellipse cx="20" cy="20" rx="9" ry="8" fill="#6a9b3a"/>
+            <ellipse cx="34" cy="20" rx="9" ry="8" fill="#6a9b3a"/>
+            <ellipse cx="27" cy="24" rx="12" ry="9" fill="#8ab954"/>
+            <ellipse cx="19" cy="28" rx="8" ry="7" fill="#5a8a2d"/>
+            <ellipse cx="35" cy="28" rx="8" ry="7" fill="#5a8a2d"/>
+            <ellipse cx="27" cy="30" rx="10" ry="8" fill="#8ab954"/>
+            <rect x="24" y="36" width="6" height="12" rx="2" fill="#5a8a2d"/>
+          </svg>
+          <div>
+            <div class="footer-logo-name">ARGENTUM</div>
+            <div class="footer-logo-tag">Absichern &middot; Finanzieren &middot; Veranlagen</div>
+          </div>
+        </div>
+        <p>ARGENTUM GmbH &ndash; Ihr unabh&auml;ngiger Finanz- und Versicherungsberater in Wels, &Ouml;sterreich.</p>
+        <a href="index.html#kontakt" class="btn-primary" style="font-size:13px;padding:9px 18px;">Jetzt Kontakt aufnehmen</a>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="index.html#leistungen">Versicherungsberatung</a></li>
+          <li><a href="index.html#leistungen">Finanzierungsberatung</a></li>
+          <li><a href="index.html#leistungen">Verm&ouml;gensaufbau</a></li>
+          <li><a href="index.html#leistungen">Altersvorsorge</a></li>
+          <li><a href="index.html#leistungen">Gesundheitsvorsorge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li><a href="index.html#versicherungscheck">Versicherungs-Check</a></li>
+          <li><a href="schadenmeldung.html">Schaden melden</a></li>
+          <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+437242219990">+43 7242 219990</a></li>
+          <li><a href="mailto:office@argentum.co.at">office@argentum.co.at</a></li>
+          <li><a style="pointer-events:none;cursor:default">Maria-Theresia-Str. 41</a></li>
+          <li><a style="pointer-events:none;cursor:default">4600 Wels, &Ouml;sterreich</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="impressum-section" id="impressum">
+      <div class="impressum-title">Impressum &amp; Pflichtangaben</div>
+      <p class="impressum-text">
+        <strong style="color:rgba(255,255,255,0.5)">ARGENTUM GmbH</strong> &middot; Maria-Theresia-Str. 41 &middot; 4600 Wels &middot; &Ouml;sterreich &middot;
+        Tel.: +43 7242 219990 &middot; E-Mail: office@argentum.co.at &middot; Web: www.argentum.co.at &middot;
+        Firmenbuchnummer: FN 440241p &middot; Firmenbuchgericht: Landesgericht Wels &middot;
+        Gesch&auml;ftsf&uuml;hrer: Franz Lebelhuber, Klaus Weidinger &middot;
+        Branche: Finanz- und Verm&ouml;gensberatung, Versicherungsmakler &middot;
+        GISA-Zahlen: 28144618 (Versicherungsvermittlung) und 28132387 (Gewerbliche Verm&ouml;gensberatung) &middot;
+        Konzessionierter WAG-2018-Partner: FinanzAdmin Wertpapierdienstleistungen GmbH &middot;
+        Zust&auml;ndige Beh&ouml;rde: Bezirkshauptmannschaft Wels-Land &middot; Aufsichtsbeh&ouml;rde: FMA (Finanzmarktaufsicht) &middot;
+        Mitglied der Wirtschaftskammer &Ouml;sterreich (WKO)
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 ARGENTUM GmbH. Alle Rechte vorbehalten.</p>
+      <div class="footer-bottom-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="esg.html">ESG-Erkl&auml;rung</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/anfrage.js"></script>
+</body>
+</html>
