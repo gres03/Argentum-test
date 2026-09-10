@@ -24,17 +24,20 @@ GESCHLECHT = ["Männlich", "Weiblich", "Divers"]
 ZAHLWEISE = ["Monatlich", "Vierteljährlich", "Halbjährlich", "Jährlich"]
 
 # Feld-Kurzschreibweise:
-#   (name, label, type, required, placeholder, options, conditional)
-def f(name, label, typ="text", req=False, ph="", options=None, cond=None, hint=""):
+#   (name, label, type, required, placeholder, options, conditional, hint, attrs)
+def f(name, label, typ="text", req=False, ph="", options=None, cond=None, hint="", attrs=""):
     return dict(name=name, label=label, type=typ, required=req, placeholder=ph,
-                options=options or [], cond=cond, hint=hint)
+                options=options or [], cond=cond, hint=hint, attrs=attrs)
 
 PERSON_BASE = [
     f("titel", "Titel", ph="Dr."),
     f("vorname", "Vorname", req=True),
     f("nachname", "Nachname", req=True),
     f("strasse", "Straße und Hausnummer", req=True, ph="Musterstraße 1"),
-    f("plz-ort", "Postleitzahl und Ort", req=True, ph="1010 Wien"),
+    f("plz", "Postleitzahl", req=True, ph="4600",
+      attrs=' inputmode="numeric" maxlength="4" pattern="[0-9]{4}" '
+            'autocomplete="postal-code" data-plz-for="ort"'),
+    f("ort", "Ort", req=True, ph="Wels", attrs=' autocomplete="address-level2"'),
     f("email", "E-Mail", "email", req=True, ph="name@beispiel.at"),
     f("telefon", "Telefon", "tel", req=True, ph="+43 ..."),
     f("geburtsdatum", "Geburtsdatum", "date", req=True),
@@ -127,6 +130,38 @@ CATEGORIES = [
             dict(legend="Zahlung", fields=[
                 f("zahlweise", "Zahlungsweise", "select", req=True, options=ZAHLWEISE),
             ]),
+        ],
+    },
+    {
+        "slug": "rechtsschutzversicherung",
+        "title": "Rechtsschutzversicherung",
+        "sections": [
+            person(f("geschlecht", "Geschlecht", "select", req=True, options=GESCHLECHT)),
+            dict(legend="Gewünschter Rechtsschutz", fields=[
+                f("bereiche", "Welche Bereiche sollen abgedeckt werden?", "select", req=True, options=[
+                    "Privat-Rechtsschutz",
+                    "Berufs-Rechtsschutz",
+                    "Verkehrs-Rechtsschutz (Fahrzeuge)",
+                    "Wohn- & Grundstücks-Rechtsschutz",
+                    "Kombi-Paket (mehrere Bereiche)",
+                ]),
+                f("bereiche-sonstige", "Kombi-Paket: welche Bereiche genau?",
+                  cond=("bereiche", "Kombi-Paket (mehrere Bereiche)")),
+                f("personenkreis", "Zu versichernder Personenkreis", "select", req=True, options=[
+                    "Einzelperson", "Paar / Partnerschaft", "Familie (mit Kindern)",
+                ]),
+                f("fahrzeuge", "Anzahl Fahrzeuge im Haushalt", "number"),
+                f("selbststaendig", "Sind Sie selbstständig oder freiberuflich tätig?", "select", req=True, options=JA_NEIN),
+            ]),
+            dict(legend="Vorversicherung & laufende Fälle", fields=[
+                f("vorversicherung", "Besteht bereits eine Rechtsschutzversicherung?", "select", req=True, options=JA_NEIN),
+                f("vorversicherer", "Wenn ja: bei welcher Gesellschaft?",
+                  cond=("vorversicherung", "Ja")),
+                f("laufende-faelle", "Gibt es laufende oder absehbare Rechtsstreitigkeiten?", "select", req=True, options=JA_NEIN),
+            ]),
+            dict(legend="Zahlung & Bankverbindung", fields=[
+                f("zahlweise", "Zahlungsweise", "select", req=True, options=ZAHLWEISE),
+            ] + BANK),
         ],
     },
     {
@@ -289,8 +324,8 @@ NAV = """  <nav id="top">
 
     <ul class="nav-links">
       <li><a href="index.html#top">Home</a></li>
-      <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
       <li><a href="index.html#leistungen">Finanzberatung</a></li>
+      <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
       <li class="has-sub">
         <a href="index.html#versicherungscheck">Versicherungs-Check</a>
         <ul class="nav-sub">
@@ -309,8 +344,8 @@ NAV = """  <nav id="top">
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html#top" onclick="closeMobileMenu()">Home</a>
-    <a href="index.html#ueber-uns" onclick="closeMobileMenu()">&Uuml;ber uns</a>
     <a href="index.html#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="index.html#ueber-uns" onclick="closeMobileMenu()">&Uuml;ber uns</a>
     <a href="index.html#versicherungscheck" onclick="closeMobileMenu()">Versicherungs-Check</a>
     <a href="schadenmeldung.html" class="mobile-sub" onclick="closeMobileMenu()">&#8627; Schaden melden</a>
     <a href="index.html#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
@@ -445,8 +480,15 @@ def render_field(fld):
                    + '              </select>')
     else:
         ph = f' placeholder="{esc(fld["placeholder"])}"' if fld["placeholder"] else ""
-        maxlen = ' maxlength="254"' if fld["type"] == "email" else (' maxlength="200"' if fld["type"] == "text" else "")
-        control = f'<input type="{fld["type"]}" id="{fid}" name="{fid}"{reqattr}{ph}{maxlen}>'
+        if "maxlength" in fld["attrs"]:
+            maxlen = ""
+        elif fld["type"] == "email":
+            maxlen = ' maxlength="254"'
+        elif fld["type"] == "text":
+            maxlen = ' maxlength="200"'
+        else:
+            maxlen = ""
+        control = f'<input type="{fld["type"]}" id="{fid}" name="{fid}"{reqattr}{ph}{maxlen}{fld["attrs"]}>'
 
     return (f'              <div class="{wrap_cls}"{wrap_attr}>\n'
             f'                <label for="{fid}">{lab}{star}{hint}</label>\n'
@@ -530,6 +572,8 @@ PAGE = """<!DOCTYPE html>
 
   <!-- ── FOOTER ─────────────────────────────────────────── -->
 {footer}
+  <script src="assets/plz-at.js"></script>
+  <script src="assets/plz-ort.js"></script>
   <script src="assets/anfrage.js"></script>
 </body>
 </html>

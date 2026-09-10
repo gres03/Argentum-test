@@ -36,8 +36,8 @@
 
     <ul class="nav-links">
       <li><a href="#top">Home</a></li>
-      <li><a href="#ueber-uns">Über uns</a></li>
       <li><a href="#leistungen">Finanzberatung</a></li>
+      <li><a href="#ueber-uns">Über uns</a></li>
       <li class="has-sub">
         <a href="#versicherungscheck">Versicherungs-Check</a>
         <ul class="nav-sub">
@@ -56,8 +56,8 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="#top" onclick="closeMobileMenu()">Home</a>
-    <a href="#ueber-uns" onclick="closeMobileMenu()">Über uns</a>
     <a href="#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="#ueber-uns" onclick="closeMobileMenu()">Über uns</a>
     <a href="#versicherungscheck" onclick="closeMobileMenu()">Versicherungs-Check</a>
     <a href="schadenmeldung.html" class="mobile-sub" onclick="closeMobileMenu()">↳ Schaden melden</a>
     <a href="#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
@@ -168,171 +168,6 @@
     </div>
   </section>
 
-  <!-- ── VERSICHERUNGS-CHECK ───────────────────────────── -->
-  <!--
-    PLATZHALTER-LINKS: Jede Karte verlinkt aktuell auf "#".
-    Hier kommen später die Partner-/Vergleichslinks mit ARGENTUM-Provision rein.
-    Ziel-URL pro Karte im href="#" ersetzen; das Attribut data-partner-link
-    kennzeichnet die jeweilige Sparte zur Zuordnung.
-  -->
-  <section class="inscheck-section" id="versicherungscheck">
-    <div class="inscheck-inner">
-      <p class="section-label">Versicherungs-Check</p>
-      <h2 class="section-title">Ihr persönlicher Versicherungs-Check</h2>
-      <p class="inscheck-lead">Wir betreuen alle Versicherungssparten und vergleichen für Sie die Angebote von über 50 Gesellschaften – damit Sie optimal abgesichert sind, ohne zu viel zu bezahlen. Wählen Sie einen Bereich und starten Sie unverbindlich Ihre Anfrage.</p>
-
-      <!-- Gruppe 1 -->
-      <div class="inscheck-group anim">
-        <h3 class="inscheck-group-title">
-          <span class="inscheck-group-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </span>
-          Person &amp; Vorsorge
-        </h3>
-        <div class="inscheck-grid">
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Krankenversicherung</h4>
-            <p class="inscheck-card-desc">Private Zusatzdeckung für freie Arzt- und Spitalswahl, Sonderklasse und schnellere Behandlung.</p>
-            <a href="krankenversicherung.html" class="inscheck-card-link" data-partner-link="krankenversicherung">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Unfallversicherung</h4>
-            <p class="inscheck-card-desc">Finanzielle Absicherung bei bleibenden Folgen eines Unfalls – rund um die Uhr, weltweit.</p>
-            <a href="unfallversicherung.html" class="inscheck-card-link" data-partner-link="unfallversicherung">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Altersvorsorge</h4>
-            <p class="inscheck-card-desc">Privater Vermögensaufbau für eine sorgenfreie Pension – flexibel und steuerlich begünstigt.</p>
-            <a href="altersvorsorge.html" class="inscheck-card-link" data-partner-link="altersvorsorge">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M23 12a11.05 11.05 0 0 0-22 0z"/><path d="M18 19a3 3 0 0 1-6 0v-7"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Risikolebensversicherung</h4>
-            <p class="inscheck-card-desc">Schützt Ihre Familie oder Kreditpartner im Todesfall mit einer vereinbarten Versicherungssumme.</p>
-            <a href="risikolebensversicherung.html" class="inscheck-card-link" data-partner-link="risikolebensversicherung">Anfrage starten →</a>
-          </article>
-        </div>
-      </div>
-
-      <!-- Gruppe 2 -->
-      <div class="inscheck-group anim">
-        <h3 class="inscheck-group-title">
-          <span class="inscheck-group-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </span>
-          Wohnen
-        </h3>
-        <div class="inscheck-grid">
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Haushaltsversicherung</h4>
-            <p class="inscheck-card-desc">Deckt Ihr Hab und Gut bei Feuer, Wasser, Sturm und Einbruch – inklusive Privathaftpflicht.</p>
-            <a href="haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="haushaltsversicherung">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Eigenheim- &amp; Haushaltsversicherung</h4>
-            <p class="inscheck-card-desc">Kombinierter Schutz für Gebäude und Wohnungsinhalt – ideal für Haus- und Wohnungseigentümer.</p>
-            <a href="eigenheim-haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="eigenheim-haushaltsversicherung">Anfrage starten →</a>
-          </article>
-        </div>
-      </div>
-
-      <!-- Gruppe 3 -->
-      <div class="inscheck-group anim">
-        <h3 class="inscheck-group-title">
-          <span class="inscheck-group-icon">
-            <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><path d="M4 17v2M20 17v2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
-          </span>
-          Fahrzeug &amp; Mobilität
-        </h3>
-        <div class="inscheck-grid">
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">KFZ-Haftpflicht</h4>
-            <p class="inscheck-card-desc">Gesetzlich verpflichtende Deckung für Schäden, die Sie mit Ihrem Fahrzeug anderen zufügen.</p>
-            <a href="kfz-haftpflicht.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">KFZ-Haftpflicht &amp; Kasko</h4>
-            <p class="inscheck-card-desc">Haftpflicht plus Teil- oder Vollkasko – Schutz auch für Schäden am eigenen Fahrzeug.</p>
-            <a href="kfz-haftpflicht-mit-kasko.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht-kasko">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10l-1-3H7"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Moped-Versicherung</h4>
-            <p class="inscheck-card-desc">Haftpflicht für Mopeds und Motorfahrräder – auf Wunsch mit Diebstahl- und Kaskoschutz.</p>
-            <a href="mopedversicherung.html" class="inscheck-card-link" data-partner-link="moped-versicherung">Anfrage starten →</a>
-          </article>
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><rect x="2" y="8" width="13" height="8" rx="1"/><path d="M15 12h4l2 2v2h-6"/><circle cx="8" cy="18" r="2"/><path d="M2 12h2"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Anhänger-Versicherung</h4>
-            <p class="inscheck-card-desc">Deckung für PKW- und Wohnanhänger – Haftpflicht sowie optionaler Kaskoschutz.</p>
-            <a href="anhaengerversicherung.html" class="inscheck-card-link" data-partner-link="anhaenger-versicherung">Anfrage starten →</a>
-          </article>
-        </div>
-      </div>
-
-      <!-- Gruppe 4 – Reise (direkter Link zum Partner, kein Formular) -->
-      <div class="inscheck-group anim">
-        <h3 class="inscheck-group-title">
-          <span class="inscheck-group-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </span>
-          Reise
-        </h3>
-        <div class="inscheck-grid inscheck-grid--single">
-          <article class="inscheck-card">
-            <div class="inscheck-card-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <h4 class="inscheck-card-title">Reiseversicherung</h4>
-            <p class="inscheck-card-desc">Reise-Storno, Reisekranken- und Reisegepäckschutz – direkt online bei unserem Partner Europäische Reiseversicherung berechnen und abschließen.</p>
-            <a href="https://www.europaeische.at/?languageCode=DE&amp;systemChannelCode=SLK&amp;systemEntryPoint=start&amp;agencyNumber=503324" class="inscheck-card-link" target="_blank" rel="noopener" data-partner-link="reiseversicherung">Direkt zum Online-Rechner ↗</a>
-          </article>
-        </div>
-      </div>
-
-      <div class="inscheck-claim anim">
-        <div class="inscheck-claim-icon">
-          <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="inscheck-claim-body">
-          <p class="inscheck-claim-tag">Bereits versichert?</p>
-          <h3>Schadenfall eingetreten – jetzt Schaden melden</h3>
-          <p>Melden Sie Ihren Schaden online. Wir leiten die Meldung an Ihre Versicherung weiter und begleiten die gesamte Abwicklung.</p>
-        </div>
-        <a href="schadenmeldung.html" class="btn-primary">Schaden melden →</a>
-      </div>
-
-      <p class="inscheck-note">Alle Anfragen sind unverbindlich und kostenlos. ARGENTUM berät Sie unabhängig und vergleicht die Angebote führender Versicherungsgesellschaften.</p>
-    </div>
-  </section>
-
   <!-- ── PHILOSOPHIE ────────────────────────────────────── -->
   <section class="philosophy" id="ueber-uns">
     <div class="philosophy-left anim">
@@ -378,12 +213,199 @@
       <div class="stat-label">Kernbereiche:<br>Absichern · Finanzieren · Veranlagen</div>
     </div>
     <div class="stat-item anim anim-delay-2">
-      <div class="stat-num">32<span>+</span></div>
+      <div class="stat-num">500</div>
       <div class="stat-label">Kooperationspartner</div>
     </div>
     <div class="stat-item anim anim-delay-3">
-      <div class="stat-num"><span style="font-size:22px;display:block;line-height:1.2">seit</span>2015</div>
+      <div class="stat-num"><span style="font-size:22px;display:block;line-height:1.2">seit</span>1994</div>
       <div class="stat-label">Für unsere Kunden da</div>
+    </div>
+  </section>
+
+  <!-- ── VERSICHERUNGS-CHECK ───────────────────────────── -->
+  <!--
+    PLATZHALTER-LINKS: Jede Karte verlinkt aktuell auf "#".
+    Hier kommen später die Partner-/Vergleichslinks mit ARGENTUM-Provision rein.
+    Ziel-URL pro Karte im href="#" ersetzen; das Attribut data-partner-link
+    kennzeichnet die jeweilige Sparte zur Zuordnung.
+  -->
+  <section class="inscheck-section" id="versicherungscheck">
+    <div class="inscheck-inner">
+      <p class="section-label">Versicherungs-Check</p>
+      <h2 class="section-title">Ihr persönlicher Versicherungs-Check</h2>
+      <p class="inscheck-lead">Wir betreuen alle Versicherungssparten und vergleichen für Sie die Angebote von über 50 Gesellschaften – damit Sie optimal abgesichert sind, ohne zu viel zu bezahlen. Wählen Sie einen Bereich und starten Sie unverbindlich Ihre Anfrage.</p>
+
+      <!--
+        Gruppe „Reise" – auf Wunsch der Geschäftsführung nach vorne gestellt.
+        Direkte Online-Rechner der Partner, kein internes Formular.
+        OFFEN (Anmerkung GF „kasko???"): unklar, ob hier zusätzlich eine
+        Reise-Kasko-Variante gewünscht ist – mit GF abzuklären.
+      -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          Reise
+        </h3>
+        <p class="inscheck-group-lead">Reiseschutz können Sie bei unseren Partnern direkt online berechnen und – noch vor Reiseantritt – sofort abschließen.</p>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Reiseversicherung – Europäische</h4>
+            <p class="inscheck-card-desc">Reise-Storno, Reisekranken- und Reisegepäckschutz – direkt online bei unserem Partner Europäische Reiseversicherung berechnen und abschließen.</p>
+            <a href="https://www.europaeische.at/?languageCode=DE&amp;systemChannelCode=SLK&amp;systemEntryPoint=start&amp;agencyNumber=503324" class="inscheck-card-link" target="_blank" rel="noopener" data-partner-link="reiseversicherung-europaeische">Online berechnen &amp; abschließen ↗</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3.5S18 3 16.5 4.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Reiseversicherung – Wiener Städtische</h4>
+            <p class="inscheck-card-desc">Auslandskranken-, Reisestorno- und Reisekasko-Schutz – beim Partner Wiener Städtische in wenigen Minuten online berechnen und abschließen.</p>
+            <a href="https://www.wienerstaedtische.at/versicherungen/privatkunden/freizeit-reise/reiseversicherung.html" class="inscheck-card-link" target="_blank" rel="noopener" data-partner-link="reiseversicherung-wienerstaedtische">Online berechnen &amp; abschließen ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe „Person & Vorsorge" -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          Person &amp; Vorsorge
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Krankenversicherung</h4>
+            <p class="inscheck-card-desc">Private Zusatzdeckung für freie Arzt- und Spitalswahl, Sonderklasse und schnellere Behandlung.</p>
+            <a href="krankenversicherung.html" class="inscheck-card-link" data-partner-link="krankenversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Unfallversicherung</h4>
+            <p class="inscheck-card-desc">Finanzielle Absicherung bei bleibenden Folgen eines Unfalls – rund um die Uhr, weltweit.</p>
+            <a href="unfallversicherung.html" class="inscheck-card-link" data-partner-link="unfallversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Altersvorsorge</h4>
+            <p class="inscheck-card-desc">Privater Vermögensaufbau für eine sorgenfreie Pension – flexibel und steuerlich begünstigt.</p>
+            <a href="altersvorsorge.html" class="inscheck-card-link" data-partner-link="altersvorsorge">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M23 12a11.05 11.05 0 0 0-22 0z"/><path d="M18 19a3 3 0 0 1-6 0v-7"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Risikolebensversicherung</h4>
+            <p class="inscheck-card-desc">Schützt Ihre Familie oder Kreditpartner im Todesfall mit einer vereinbarten Versicherungssumme.</p>
+            <a href="risikolebensversicherung.html" class="inscheck-card-link" data-partner-link="risikolebensversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M8 7l-3.5 7a3.5 3.5 0 0 0 7 0z"/><path d="M16 7l-3.5 7a3.5 3.5 0 0 0 7 0z"/><path d="M8 21h8"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Rechtsschutzversicherung</h4>
+            <p class="inscheck-card-desc">Trägt Anwalts-, Gerichts- und Sachverständigenkosten – für Streitfälle in Privatleben, Beruf, Verkehr und Wohnen.</p>
+            <a href="rechtsschutzversicherung.html" class="inscheck-card-link" data-partner-link="rechtsschutzversicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe „Wohnen" -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          Wohnen
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Haushaltsversicherung</h4>
+            <p class="inscheck-card-desc">Deckt Ihr Hab und Gut bei Feuer, Wasser, Sturm und Einbruch – inklusive Privathaftpflicht.</p>
+            <a href="haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="haushaltsversicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Eigenheim- &amp; Haushaltsversicherung</h4>
+            <p class="inscheck-card-desc">Kombinierter Schutz für Gebäude und Wohnungsinhalt – ideal für Haus- und Wohnungseigentümer.</p>
+            <a href="eigenheim-haushaltsversicherung.html" class="inscheck-card-link" data-partner-link="eigenheim-haushaltsversicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- Gruppe „Fahrzeug & Mobilität" -->
+      <div class="inscheck-group anim">
+        <h3 class="inscheck-group-title">
+          <span class="inscheck-group-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><path d="M4 17v2M20 17v2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+          </span>
+          Fahrzeug &amp; Mobilität
+        </h3>
+        <div class="inscheck-grid">
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M5 17h14M6.5 17l1.2-5.5A2 2 0 0 1 9.66 10h4.68a2 2 0 0 1 1.96 1.5L17.5 17"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">KFZ-Haftpflicht</h4>
+            <p class="inscheck-card-desc">Gesetzlich verpflichtende Deckung für Schäden, die Sie mit Ihrem Fahrzeug anderen zufügen.</p>
+            <a href="kfz-haftpflicht.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">KFZ-Haftpflicht &amp; Kasko</h4>
+            <p class="inscheck-card-desc">Haftpflicht plus Teil- oder Vollkasko – Schutz auch für Schäden am eigenen Fahrzeug.</p>
+            <a href="kfz-haftpflicht-mit-kasko.html" class="inscheck-card-link" data-partner-link="kfz-haftpflicht-kasko">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10l-1-3H7"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Moped-Versicherung</h4>
+            <p class="inscheck-card-desc">Haftpflicht für Mopeds und Motorfahrräder – auf Wunsch mit Diebstahl- und Kaskoschutz.</p>
+            <a href="mopedversicherung.html" class="inscheck-card-link" data-partner-link="moped-versicherung">Anfrage starten →</a>
+          </article>
+          <article class="inscheck-card">
+            <div class="inscheck-card-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="8" width="13" height="8" rx="1"/><path d="M15 12h4l2 2v2h-6"/><circle cx="8" cy="18" r="2"/><path d="M2 12h2"/></svg>
+            </div>
+            <h4 class="inscheck-card-title">Anhänger-Versicherung</h4>
+            <p class="inscheck-card-desc">Deckung für PKW- und Wohnanhänger – Haftpflicht sowie optionaler Kaskoschutz.</p>
+            <a href="anhaengerversicherung.html" class="inscheck-card-link" data-partner-link="anhaenger-versicherung">Anfrage starten →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="inscheck-claim anim">
+        <div class="inscheck-claim-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="inscheck-claim-body">
+          <p class="inscheck-claim-tag">Bereits versichert?</p>
+          <h3>Schadenfall eingetreten – jetzt Schaden melden</h3>
+          <p>Melden Sie Ihren Schaden online. Wir leiten die Meldung an Ihre Versicherung weiter und begleiten die gesamte Abwicklung.</p>
+        </div>
+        <a href="schadenmeldung.html" class="btn-primary">Schaden melden →</a>
+      </div>
+
+      <p class="inscheck-note">Alle Anfragen sind unverbindlich und kostenlos. ARGENTUM berät Sie unabhängig und vergleicht die Angebote führender Versicherungsgesellschaften.</p>
     </div>
   </section>
 
@@ -463,6 +485,13 @@
           <div class="team-role">Office</div>
         </div>
       </div>
+      <!-- Foto folgt – wird von der GF nachgereicht -->
+      <div class="team-card anim anim-delay-4">
+        <div class="team-photo team-photo--ph" role="img" aria-label="Victoria – Foto folgt">V</div>
+        <div class="team-body">
+          <div class="team-name">Victoria</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -471,14 +500,14 @@
     <div class="cta-left">
       <p class="section-label" style="color:rgba(255,255,255,0.55)">Jetzt starten</p>
       <h2>Bereit für Ihre<br>finanzielle Zukunft?</h2>
-      <p>Vereinbaren Sie noch heute ein unverbindliches Erstgespräch. Kein Verkaufsdruck – nur ehrliche, kompetente Beratung.</p>
-      <a href="#kontakt" class="btn-white">Kostenloses Erstgespräch</a>
+      <p>Vereinbaren Sie noch heute ein unverbindliches Erstgespräch – ehrliche, verlässliche und kompetente Beratung.</p>
+      <a href="#kontakt" class="btn-white">Erstgespräch vereinbaren</a>
     </div>
     <div class="cta-right">
       <div class="cta-circle">
         <div class="cta-circle-inner">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div class="cta-text">100 % unabhängig &amp; kostenlos</div>
+          <div class="cta-text">100 % unabhängig</div>
         </div>
       </div>
     </div>
@@ -489,12 +518,16 @@
     <div class="partners-section-inner">
       <p class="section-label">Kooperationspartner</p>
       <h2 class="section-title">Starke Partner –<br>für Ihre besten Konditionen</h2>
-      <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Wir sind mit über 30 der besten Versicherungen und Finanzpartner Österreichs verpartnert. Dank dieser Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
+      <p style="font-size:15px;color:var(--gray);max-width:580px;line-height:1.75;">Wir sind mit über 500 Versicherungs- und Finanzpartnern Österreichs verpartnert. Dank dieser Unabhängigkeit wählen wir aus einem breiten Netzwerk führender Anbieter – immer zum Vorteil unserer Kunden.</p>
     </div>
     <div class="partner-slider-wrap">
       <div class="partner-track" id="partnerTrack">
         <div class="partner-logo"><img src="images/partners/oberbank.png" alt="Oberbank"></div>
-        <div class="partner-logo"><img src="images/partners/ing.png" alt="ING"></div>
+        <!-- Platzhalter – echte Logos werden von der GF nachgereicht (Merkur ist bereits enthalten) -->
+        <div class="partner-logo partner-logo--ph"><span>Volksbank</span></div>
+        <div class="partner-logo partner-logo--ph"><span>bank99</span></div>
+        <div class="partner-logo partner-logo--ph"><span>Checkleasing</span></div>
+        <div class="partner-logo partner-logo--ph"><span>easybank</span></div>
         <div class="partner-logo"><img src="images/partners/allianz.jpg" alt="Allianz"></div>
         <div class="partner-logo"><img src="images/partners/ergo.jpg" alt="ERGO"></div>
         <div class="partner-logo"><img src="images/partners/hdi.jpg" alt="HDI"></div>
@@ -508,8 +541,6 @@
         <div class="partner-logo"><img src="images/partners/generali.jpg" alt="Generali"></div>
         <div class="partner-logo"><img src="images/partners/zurich.jpg" alt="Zürich"></div>
         <div class="partner-logo"><img src="images/partners/start-bausparkasse.png" alt="Start Bausparkasse"></div>
-        <div class="partner-logo"><img src="images/partners/fwu.png" alt="FWU"></div>
-        <div class="partner-logo"><img src="images/partners/hello-bank.jpg" alt="Hello Bank"></div>
         <div class="partner-logo"><img src="images/partners/uniqa.jpg" alt="UNIQA"></div>
         <div class="partner-logo"><img src="images/partners/continentale.jpg" alt="Continentale"></div>
         <div class="partner-logo"><img src="images/partners/dialog.jpg" alt="Dialog"></div>
@@ -527,7 +558,11 @@
         <div class="partner-logo"><img src="images/partners/easy-leasing.png" alt="easy leasing"></div>
         <!-- duplicate set for seamless loop -->
         <div class="partner-logo"><img src="images/partners/oberbank.png" alt="Oberbank"></div>
-        <div class="partner-logo"><img src="images/partners/ing.png" alt="ING"></div>
+        <!-- Platzhalter – echte Logos werden von der GF nachgereicht (Merkur ist bereits enthalten) -->
+        <div class="partner-logo partner-logo--ph"><span>Volksbank</span></div>
+        <div class="partner-logo partner-logo--ph"><span>bank99</span></div>
+        <div class="partner-logo partner-logo--ph"><span>Checkleasing</span></div>
+        <div class="partner-logo partner-logo--ph"><span>easybank</span></div>
         <div class="partner-logo"><img src="images/partners/allianz.jpg" alt="Allianz"></div>
         <div class="partner-logo"><img src="images/partners/ergo.jpg" alt="ERGO"></div>
         <div class="partner-logo"><img src="images/partners/hdi.jpg" alt="HDI"></div>
@@ -541,8 +576,6 @@
         <div class="partner-logo"><img src="images/partners/generali.jpg" alt="Generali"></div>
         <div class="partner-logo"><img src="images/partners/zurich.jpg" alt="Zürich"></div>
         <div class="partner-logo"><img src="images/partners/start-bausparkasse.png" alt="Start Bausparkasse"></div>
-        <div class="partner-logo"><img src="images/partners/fwu.png" alt="FWU"></div>
-        <div class="partner-logo"><img src="images/partners/hello-bank.jpg" alt="Hello Bank"></div>
         <div class="partner-logo"><img src="images/partners/uniqa.jpg" alt="UNIQA"></div>
         <div class="partner-logo"><img src="images/partners/continentale.jpg" alt="Continentale"></div>
         <div class="partner-logo"><img src="images/partners/dialog.jpg" alt="Dialog"></div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mopedversicherung &ndash; Anfrage | ARGENTUM GmbH</title>
-  <meta name="description" content="Mopedversicherung &ndash; Versicherungs-Check von ARGENTUM GmbH. Unverbindlich und kostenlos anfragen.">
+  <title>Rechtsschutzversicherung &ndash; Anfrage | ARGENTUM GmbH</title>
+  <meta name="description" content="Rechtsschutzversicherung &ndash; Versicherungs-Check von ARGENTUM GmbH. Unverbindlich und kostenlos anfragen.">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/styles.css">
@@ -69,7 +69,7 @@
 
       <div class="anfrage-main">
         <p class="section-label">Versicherungs-Check</p>
-        <h1 class="anfrage-title">Mopedversicherung</h1>
+        <h1 class="anfrage-title">Rechtsschutzversicherung</h1>
         <p class="anfrage-intro">Bitte nennen Sie uns Ihre wichtigsten Eckdaten, damit wir das für Sie beste Absicherungs-Konzept erarbeiten können.</p>
         <p class="ff-required-note">Mit <span class="ff-req">*</span> markierte Felder sind Pflichtfelder.</p>
 
@@ -80,8 +80,8 @@
           erscheint).
         -->
         <form id="anfrage-form" class="ff-form js-form" novalidate>
-          <input type="hidden" name="_betreff" value="Versicherungs-Check: Mopedversicherung">
-          <input type="hidden" name="_sparte" value="mopedversicherung">
+          <input type="hidden" name="_betreff" value="Versicherungs-Check: Rechtsschutzversicherung">
+          <input type="hidden" name="_sparte" value="rechtsschutzversicherung">
           <div style="position:absolute;left:-9999px" aria-hidden="true">
             <label>Bitte leer lassen <input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>
           </div>
@@ -138,56 +138,69 @@
           </fieldset>
 
           <fieldset class="ff-section">
-            <legend>Fahrzeugdaten</legend>
+            <legend>Gewünschter Rechtsschutz</legend>
             <div class="ff-grid">
               <div class="ff-field">
-                <label for="fahrzeugart">Fahrzeugart <span class="ff-req">*</span></label>
-                <select id="fahrzeugart" name="fahrzeugart" required>
+                <label for="bereiche">Welche Bereiche sollen abgedeckt werden? <span class="ff-req">*</span></label>
+                <select id="bereiche" name="bereiche" required>
                 <option value="">&ndash; Bitte ausw&auml;hlen &ndash;</option>
-                <option value="Moped">Moped</option>
-                <option value="Motorrad">Motorrad</option>
-                <option value="Kleinmotorrad">Kleinmotorrad</option>
+                <option value="Privat-Rechtsschutz">Privat-Rechtsschutz</option>
+                <option value="Berufs-Rechtsschutz">Berufs-Rechtsschutz</option>
+                <option value="Verkehrs-Rechtsschutz (Fahrzeuge)">Verkehrs-Rechtsschutz (Fahrzeuge)</option>
+                <option value="Wohn- &amp; Grundstücks-Rechtsschutz">Wohn- &amp; Grundstücks-Rechtsschutz</option>
+                <option value="Kombi-Paket (mehrere Bereiche)">Kombi-Paket (mehrere Bereiche)</option>
+              </select>
+              </div>
+              <div class="ff-field ff-col-full ff-conditional" data-when="bereiche" data-equals="Kombi-Paket (mehrere Bereiche)">
+                <label for="bereiche-sonstige">Kombi-Paket: welche Bereiche genau?</label>
+                <input type="text" id="bereiche-sonstige" name="bereiche-sonstige" maxlength="200">
+              </div>
+              <div class="ff-field">
+                <label for="personenkreis">Zu versichernder Personenkreis <span class="ff-req">*</span></label>
+                <select id="personenkreis" name="personenkreis" required>
+                <option value="">&ndash; Bitte ausw&auml;hlen &ndash;</option>
+                <option value="Einzelperson">Einzelperson</option>
+                <option value="Paar / Partnerschaft">Paar / Partnerschaft</option>
+                <option value="Familie (mit Kindern)">Familie (mit Kindern)</option>
               </select>
               </div>
               <div class="ff-field">
-                <label for="fahrzeugmarke">Fahrzeugmarke <span class="ff-req">*</span></label>
-                <input type="text" id="fahrzeugmarke" name="fahrzeugmarke" required maxlength="200">
+                <label for="fahrzeuge">Anzahl Fahrzeuge im Haushalt</label>
+                <input type="number" id="fahrzeuge" name="fahrzeuge">
               </div>
               <div class="ff-field">
-                <label for="erstzulassung">Erstzulassung <span class="ff-req">*</span></label>
-                <input type="date" id="erstzulassung" name="erstzulassung" required>
+                <label for="selbststaendig">Sind Sie selbstständig oder freiberuflich tätig? <span class="ff-req">*</span></label>
+                <select id="selbststaendig" name="selbststaendig" required>
+                <option value="">&ndash; Bitte ausw&auml;hlen &ndash;</option>
+                <option value="Ja">Ja</option>
+                <option value="Nein">Nein</option>
+              </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ff-section">
+            <legend>Vorversicherung &amp; laufende Fälle</legend>
+            <div class="ff-grid">
+              <div class="ff-field">
+                <label for="vorversicherung">Besteht bereits eine Rechtsschutzversicherung? <span class="ff-req">*</span></label>
+                <select id="vorversicherung" name="vorversicherung" required>
+                <option value="">&ndash; Bitte ausw&auml;hlen &ndash;</option>
+                <option value="Ja">Ja</option>
+                <option value="Nein">Nein</option>
+              </select>
+              </div>
+              <div class="ff-field ff-col-full ff-conditional" data-when="vorversicherung" data-equals="Ja">
+                <label for="vorversicherer">Wenn ja: bei welcher Gesellschaft?</label>
+                <input type="text" id="vorversicherer" name="vorversicherer" maxlength="200">
               </div>
               <div class="ff-field">
-                <label for="sitzplaetze">Anzahl Plätze <span class="ff-req">*</span></label>
-                <input type="number" id="sitzplaetze" name="sitzplaetze" required>
-              </div>
-              <div class="ff-field">
-                <label for="co2">CO₂-Wert (g/km) <span class="ff-req">*</span></label>
-                <input type="text" id="co2" name="co2" required maxlength="200">
-              </div>
-              <div class="ff-field">
-                <label for="kw">Leistung (kW) <span class="ff-req">*</span></label>
-                <input type="text" id="kw" name="kw" required maxlength="200">
-              </div>
-              <div class="ff-field">
-                <label for="antriebsart">Antriebsart <span class="ff-req">*</span></label>
-                <input type="text" id="antriebsart" name="antriebsart" required maxlength="200">
-              </div>
-              <div class="ff-field">
-                <label for="hubraum">Hubraum (ccm) <span class="ff-req">*</span></label>
-                <input type="number" id="hubraum" name="hubraum" required>
-              </div>
-              <div class="ff-field">
-                <label for="eigengewicht">Eigengewicht (kg) <span class="ff-req">*</span></label>
-                <input type="number" id="eigengewicht" name="eigengewicht" required>
-              </div>
-              <div class="ff-field">
-                <label for="kennzeichen">Kennzeichen – falls vorhanden</label>
-                <input type="text" id="kennzeichen" name="kennzeichen" maxlength="200">
-              </div>
-              <div class="ff-field">
-                <label for="fahrgestellnummer">Fahrgestellnummer <span class="ff-req">*</span></label>
-                <input type="text" id="fahrgestellnummer" name="fahrgestellnummer" required maxlength="200">
+                <label for="laufende-faelle">Gibt es laufende oder absehbare Rechtsstreitigkeiten? <span class="ff-req">*</span></label>
+                <select id="laufende-faelle" name="laufende-faelle" required>
+                <option value="">&ndash; Bitte ausw&auml;hlen &ndash;</option>
+                <option value="Ja">Ja</option>
+                <option value="Nein">Nein</option>
+              </select>
               </div>
             </div>
           </fieldset>

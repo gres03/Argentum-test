@@ -658,6 +658,14 @@
       border-bottom: 1px solid var(--divider);
     }
 
+    .inscheck-group-lead {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin: -8px 0 22px;
+      max-width: 640px;
+    }
+
     .inscheck-group-icon {
       width: 34px;
       height: 34px;
@@ -1054,6 +1062,18 @@
       filter: contrast(1.15) saturate(1.08);
     }
 
+    .team-photo--ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(150deg, var(--green-pale), var(--green-bg));
+      color: var(--green-dark);
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      filter: none;
+    }
+
     .team-body {
       padding: 18px 20px 20px;
     }
@@ -1253,6 +1273,14 @@
     }
 
     .partner-logo:hover img { filter: grayscale(0); }
+
+    .partner-logo--ph span {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gray);
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
 
     /* ── CONTACT ─────────────────────────────────────────── */
     .contact-section {

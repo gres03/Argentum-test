@@ -34,8 +34,8 @@
 
     <ul class="nav-links">
       <li><a href="index.html#top">Home</a></li>
-      <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
       <li><a href="index.html#leistungen">Finanzberatung</a></li>
+      <li><a href="index.html#ueber-uns">&Uuml;ber uns</a></li>
       <li class="has-sub">
         <a href="index.html#versicherungscheck">Versicherungs-Check</a>
         <ul class="nav-sub">
@@ -54,8 +54,8 @@
   </nav>
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html#top" onclick="closeMobileMenu()">Home</a>
-    <a href="index.html#ueber-uns" onclick="closeMobileMenu()">&Uuml;ber uns</a>
     <a href="index.html#leistungen" onclick="closeMobileMenu()">Finanzberatung</a>
+    <a href="index.html#ueber-uns" onclick="closeMobileMenu()">&Uuml;ber uns</a>
     <a href="index.html#versicherungscheck" onclick="closeMobileMenu()">Versicherungs-Check</a>
     <a href="schadenmeldung.html" class="mobile-sub" onclick="closeMobileMenu()">&#8627; Schaden melden</a>
     <a href="index.html#kooperationen" onclick="closeMobileMenu()">Kooperationen</a>
@@ -106,8 +106,12 @@
                 <input type="text" id="strasse" name="strasse" required placeholder="Musterstraße 1" maxlength="200">
               </div>
               <div class="ff-field">
-                <label for="plz-ort">Postleitzahl und Ort <span class="ff-req">*</span></label>
-                <input type="text" id="plz-ort" name="plz-ort" required placeholder="1010 Wien" maxlength="200">
+                <label for="plz">Postleitzahl <span class="ff-req">*</span></label>
+                <input type="text" id="plz" name="plz" required placeholder="4600" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="postal-code" data-plz-for="ort">
+              </div>
+              <div class="ff-field">
+                <label for="ort">Ort <span class="ff-req">*</span></label>
+                <input type="text" id="ort" name="ort" required placeholder="Wels" maxlength="200" autocomplete="address-level2">
               </div>
               <div class="ff-field">
                 <label for="email">E-Mail <span class="ff-req">*</span></label>
@@ -307,6 +311,8 @@
     </div>
   </footer>
 
+  <script src="assets/plz-at.js"></script>
+  <script src="assets/plz-ort.js"></script>
   <script src="assets/anfrage.js"></script>
 </body>
 </html>
