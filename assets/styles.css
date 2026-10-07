@@ -1032,9 +1032,9 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 240px));
+      grid-template-columns: repeat(5, minmax(0, 220px));
       justify-content: center;
-      gap: 22px;
+      gap: 18px;
       margin-top: 44px;
     }
 
